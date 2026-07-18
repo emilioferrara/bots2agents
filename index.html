@@ -1,0 +1,732 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+<title>From Bots to Agents — References</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --ground:      #FBFAF9;
+    --panel:       #FFFFFF;
+    --ink:         #17161A;
+    --ink-soft:    #55525C;
+    --ink-faint:   #8A8691;
+    --rule:        #E4E1DE;
+    --accent:      #C4432A;
+    --accent-soft: #FBF0ED;
+    --code-bg:     #F4F2F0;
+    --shadow:      0 1px 2px rgba(23,22,26,.05), 0 8px 24px -12px rgba(23,22,26,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground:      #131215;
+      --panel:       #1B1A1F;
+      --ink:         #EDEBEF;
+      --ink-soft:    #A9A5B0;
+      --ink-faint:   #736F7B;
+      --rule:        #2C2A31;
+      --accent:      #F0785C;
+      --accent-soft: #2A1C19;
+      --code-bg:     #232128;
+      --shadow:      0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#131215; --panel:#1B1A1F; --ink:#EDEBEF; --ink-soft:#A9A5B0;
+    --ink-faint:#736F7B; --rule:#2C2A31; --accent:#F0785C; --accent-soft:#2A1C19;
+    --code-bg:#232128; --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"] {
+    --ground:#FBFAF9; --panel:#FFFFFF; --ink:#17161A; --ink-soft:#55525C;
+    --ink-faint:#8A8691; --rule:#E4E1DE; --accent:#C4432A; --accent-soft:#FBF0ED;
+    --code-bg:#F4F2F0; --shadow:0 1px 2px rgba(23,22,26,.05), 0 8px 24px -12px rgba(23,22,26,.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 52rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
+
+  /* ---------- masthead ---------- */
+  header { padding: 3.5rem 0 2rem; border-bottom: 1px solid var(--rule); }
+  .tick { width: 2.5rem; height: 4px; background: var(--accent); border-radius: 2px; }
+  .eyebrow {
+    margin: 1.1rem 0 0;
+    font-size: .74rem; font-weight: 650; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  h1 {
+    margin: .6rem 0 0;
+    font-size: clamp(2rem, 5.5vw, 2.9rem);
+    line-height: 1.08; font-weight: 750; letter-spacing: -.022em;
+    text-wrap: balance;
+  }
+  .standfirst {
+    margin: 1rem 0 0; max-width: 40rem;
+    font-size: 1.06rem; color: var(--ink-soft);
+  }
+  .byline {
+    margin: 1.5rem 0 0; font-size: .9rem; color: var(--ink-faint);
+  }
+  .byline a { color: var(--ink-soft); }
+
+  /* ---------- toolbar ---------- */
+  .toolbar {
+    display: flex; flex-wrap: wrap; gap: .6rem;
+    margin: 2rem 0 0;
+  }
+  button.tool {
+    font: inherit; font-size: .87rem; font-weight: 600;
+    color: var(--ink); background: var(--panel);
+    border: 1px solid var(--rule); border-radius: 7px;
+    padding: .5rem .85rem; cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  button.tool:hover { border-color: var(--accent); color: var(--accent); }
+  button.tool:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- section ---------- */
+  section { margin: 3.25rem 0 0; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: .75rem;
+    padding-bottom: .6rem; border-bottom: 1px solid var(--rule);
+  }
+  .sec-num {
+    font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+    color: var(--accent); font-variant-numeric: tabular-nums;
+  }
+  .sec-head h2 {
+    margin: 0; font-size: 1.16rem; font-weight: 700; letter-spacing: -.01em;
+  }
+
+  /* ---------- entry ---------- */
+  .entry {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .entry:last-child { border-bottom: 0; }
+  .entry h3 {
+    margin: 0; font-size: 1.04rem; font-weight: 660;
+    line-height: 1.35; letter-spacing: -.008em; text-wrap: balance;
+  }
+  .authors {
+    margin: .4rem 0 0; font-size: .9rem; color: var(--ink-soft);
+  }
+  .venue {
+    margin: .2rem 0 0; font-size: .87rem; color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+  .why {
+    margin: .85rem 0 0; padding-left: .85rem;
+    border-left: 2px solid var(--accent);
+    font-size: .95rem; color: var(--ink);
+  }
+  .why b { font-weight: 660; }
+
+  .links {
+    display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+    margin: .9rem 0 0;
+  }
+  .links a, .links button {
+    font: inherit; font-size: .82rem; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+    padding: .3rem .6rem; border-radius: 6px;
+    border: 1px solid var(--rule); background: transparent;
+    color: var(--ink-soft);
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .links a:hover, .links button:hover {
+    color: var(--accent); border-color: var(--accent); background: var(--accent-soft);
+  }
+  .links a:focus-visible, .links button:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+  .slideref {
+    margin-left: auto; font-size: .76rem; color: var(--ink-faint);
+    font-variant-numeric: tabular-nums; letter-spacing: .03em;
+  }
+
+  pre {
+    display: none;
+    margin: .9rem 0 0; padding: .9rem 1rem;
+    background: var(--code-bg); border-radius: 8px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .78rem; line-height: 1.5; color: var(--ink);
+    white-space: pre;
+  }
+  .entry.open pre { display: block; }
+
+  /* ---------- notes ---------- */
+  .note {
+    margin: 3.5rem 0 0; padding: 1.15rem 1.25rem;
+    background: var(--panel); border: 1px solid var(--rule);
+    border-radius: 10px; box-shadow: var(--shadow);
+    font-size: .9rem; color: var(--ink-soft);
+  }
+  .note h2 {
+    margin: 0 0 .5rem; font-size: .78rem; font-weight: 700;
+    letter-spacing: .09em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .note p { margin: .5rem 0 0; }
+  .note a { color: var(--accent); }
+
+  footer {
+    margin: 3rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--rule);
+    font-size: .84rem; color: var(--ink-faint);
+  }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 1.5rem; transform: translate(-50%, 1.5rem);
+    background: var(--ink); color: var(--ground);
+    padding: .6rem 1rem; border-radius: 8px;
+    font-size: .87rem; font-weight: 600;
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s, transform .2s;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="tick"></div>
+    <p class="eyebrow">SICSS Singapore 2026 · Closing lecture · Appendix</p>
+    <h1>From Bots to Agents</h1>
+    <p class="standfirst">
+      Every paper referenced in the lecture, with a citation-ready BibTeX entry and a
+      one-line note on what each one is actually good for citing. Grouped in the order
+      they appear in the talk.
+    </p>
+    <p class="byline">
+      Emilio Ferrara · University of Southern California ·
+      <a href="mailto:emiliofe@usc.edu">emiliofe@usc.edu</a><br>
+      All entries verified against Crossref and the arXiv API on 18 July 2026.
+    </p>
+    <div class="toolbar">
+      <button class="tool" onclick="copyAll()">Copy all BibTeX</button>
+      <button class="tool" onclick="toggleAll()" id="expandBtn">Show all BibTeX</button>
+    </div>
+  </header>
+
+  <div id="body"></div>
+
+  <div class="note">
+    <h2>Three corrections worth knowing</h2>
+    <p>
+      The election-interference taxonomy is often cited from its 2024 SSRN preprint. The
+      version of record is <b>First Monday 30(6), 2025</b> — cite that one.
+    </p>
+    <p>
+      The ICWSM 2020 inverse-reinforcement-learning paper is frequently cited with a
+      truncated title. The full title carries the subtitle
+      <i>“A Case Study of Russian Trolls in the 2016 US Election.”</i>
+    </p>
+    <p>
+      The 2024 cross-platform operations paper exists as an SSRN preprint with a
+      different author order. The version of record is <b>First Monday 29(11)</b>:
+      Minici, Cinus, Luceri, Ferrara.
+    </p>
+  </div>
+
+  <footer>
+    Appendix to the SICSS-Singapore 2026 closing lecture, 20 July 2026, NUS.
+    Preprints are linked to arXiv; published versions are linked by DOI. Where a paper
+    exists in both forms, cite the published version.
+  </footer>
+</div>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+const DATA = [
+  {
+    sec: "01", secTitle: "Era of Bots — detection as classification",
+    items: [
+      {
+        slide: "5, 7",
+        title: "The rise of social bots",
+        authors: "Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, Alessandro Flammini",
+        venue: "Communications of the ACM 59(7), 96–104, 2016",
+        why: "The field-defining survey. Cite it for <b>what a social bot is</b> and for the claim that bot detection is a classification problem over content, network, temporal and metadata signals.",
+        doi: "10.1145/2818717",
+        bib: `@article{ferrara2016rise,
+  title   = {The rise of social bots},
+  author  = {Ferrara, Emilio and Varol, Onur and Davis, Clayton and Menczer, Filippo and Flammini, Alessandro},
+  journal = {Communications of the ACM},
+  volume  = {59},
+  number  = {7},
+  pages   = {96--104},
+  year    = {2016},
+  doi     = {10.1145/2818717}
+}`
+      },
+      {
+        slide: "8, 9",
+        title: "Social bots distort the 2016 U.S. Presidential election online discussion",
+        authors: "Alessandro Bessi, Emilio Ferrara",
+        venue: "First Monday 21(11), 2016",
+        why: "The first quantitative evidence of automated interference in a US election, published <b>before</b> election day. Cite it for bot prevalence in the 2016 cycle; it was later referenced in the Senate Intelligence Committee's Russia investigation.",
+        doi: "10.5210/fm.v21i11.7090",
+        bib: `@article{bessi2016social,
+  title   = {Social bots distort the 2016 {U.S.} {Presidential} election online discussion},
+  author  = {Bessi, Alessandro and Ferrara, Emilio},
+  journal = {First Monday},
+  volume  = {21},
+  number  = {11},
+  year    = {2016},
+  doi     = {10.5210/fm.v21i11.7090}
+}`
+      },
+      {
+        slide: "10",
+        title: "Detecting Social Media Manipulation in Low-Resource Languages",
+        authors: "Samar Haider, Luca Luceri, Ashok Deb, Adam Badawy, Nanyun Peng, Emilio Ferrara",
+        venue: "WWW '23 Companion, 1358–1364, 2023",
+        why: "Cite this when you need to justify studying a <b>non-English</b> information environment: it shows detection can be transferred into languages where labels are scarce, which is the precondition for most non-US work.",
+        doi: "10.1145/3543873.3587615",
+        bib: `@inproceedings{haider2023detecting,
+  title     = {Detecting Social Media Manipulation in Low-Resource Languages},
+  author    = {Haider, Samar and Luceri, Luca and Deb, Ashok and Badawy, Adam and Peng, Nanyun and Ferrara, Emilio},
+  booktitle = {Companion Proceedings of the ACM Web Conference 2023},
+  pages     = {1358--1364},
+  year      = {2023},
+  doi       = {10.1145/3543873.3587615}
+}`
+      }
+    ]
+  },
+  {
+    sec: "02", secTitle: "Era of Campaigns — reading the operator, the audience, the network",
+    items: [
+      {
+        slide: "13",
+        title: "Linguistic Cues to Deception: Identifying Political Trolls on Social Media",
+        authors: "Aseel Addawood, Adam Badawy, Kristina Lerman, Emilio Ferrara",
+        venue: "ICWSM 13(1), 15–25, 2019",
+        why: "Cite for the <b>operator-side</b> claim: paid trolls write to a brief, and that leaves measurable linguistic signatures (uncertainty, non-immediacy, specificity) distinguishing them from organic users.",
+        doi: "10.1609/icwsm.v13i01.3205",
+        bib: `@inproceedings{addawood2019linguistic,
+  title     = {Linguistic Cues to Deception: Identifying Political Trolls on Social Media},
+  author    = {Addawood, Aseel and Badawy, Adam and Lerman, Kristina and Ferrara, Emilio},
+  booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+  volume    = {13},
+  number    = {01},
+  pages     = {15--25},
+  year      = {2019},
+  doi       = {10.1609/icwsm.v13i01.3205}
+}`
+      },
+      {
+        slide: "14",
+        title: "Detecting Troll Behavior via Inverse Reinforcement Learning: A Case Study of Russian Trolls in the 2016 US Election",
+        authors: "Luca Luceri, Silvia Giordano, Emilio Ferrara",
+        venue: "ICWSM 14(1), 417–427, 2020",
+        why: "The methodological move worth citing: treat an account as an agent in a decision process and <b>recover the reward it is optimizing</b>, rather than classifying its posts. Note the full title — it is usually cited truncated.",
+        doi: "10.1609/icwsm.v14i1.7311",
+        bib: `@inproceedings{luceri2020detecting,
+  title     = {Detecting Troll Behavior via Inverse Reinforcement Learning: A Case Study of Russian Trolls in the 2016 {US} Election},
+  author    = {Luceri, Luca and Giordano, Silvia and Ferrara, Emilio},
+  booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+  volume    = {14},
+  number    = {1},
+  pages     = {417--427},
+  year      = {2020},
+  doi       = {10.1609/icwsm.v14i1.7311}
+}`
+      },
+      {
+        slide: "15",
+        title: "Who Falls for Online Political Manipulation?",
+        authors: "Adam Badawy, Kristina Lerman, Emilio Ferrara",
+        venue: "WWW '19 Companion, 162–168, 2019",
+        why: "The <b>audience-side</b> counterpart: who engages with troll content is largely predictable from political ideology, bot score, and a few metadata features. Cite it when arguing that susceptibility, not just exposure, is the variable.",
+        doi: "10.1145/3308560.3316494",
+        bib: `@inproceedings{badawy2019falls,
+  title     = {Who Falls for Online Political Manipulation?},
+  author    = {Badawy, Adam and Lerman, Kristina and Ferrara, Emilio},
+  booktitle = {Companion Proceedings of The 2019 World Wide Web Conference},
+  pages     = {162--168},
+  year      = {2019},
+  doi       = {10.1145/3308560.3316494}
+}`
+      },
+      {
+        slide: "16",
+        title: "Characterizing social media manipulation in the 2020 U.S. presidential election",
+        authors: "Emilio Ferrara, Herbert Chang, Emily Chen, Goran Muric, Jaimin Patel",
+        venue: "First Monday 25(11), 2020",
+        why: "The billion-tweet view of a single election. Cite for the finding that <b>automation is entangled with genuine communities</b> — bots amplify, humans carry — rather than operating as a separable layer.",
+        doi: "10.5210/fm.v25i11.11431",
+        bib: `@article{ferrara2020characterizing,
+  title   = {Characterizing social media manipulation in the 2020 {U.S.} presidential election},
+  author  = {Ferrara, Emilio and Chang, Herbert and Chen, Emily and Muric, Goran and Patel, Jaimin},
+  journal = {First Monday},
+  volume  = {25},
+  number  = {11},
+  year    = {2020},
+  doi     = {10.5210/fm.v25i11.11431}
+}`
+      },
+      {
+        slide: "18, 28",
+        title: "Uncovering coordinated cross-platform information operations: Threatening the integrity of the 2024 U.S. presidential election",
+        authors: "Marco Minici, Federico Cinus, Luca Luceri, Emilio Ferrara",
+        venue: "First Monday 29(11), 2024",
+        why: "The 2024-cycle case study: mock news sites and look-alike partisan accounts pushing the same external domains, with everything disposable. Cite for <b>hybrid, cross-platform operations</b> — the point at which the single-platform, single-account view stops working.",
+        doi: "10.5210/fm.v29i11.13831",
+        bib: `@article{minici2024uncovering,
+  title   = {Uncovering coordinated cross-platform information operations: Threatening the integrity of the 2024 {U.S.} presidential election},
+  author  = {Minici, Marco and Cinus, Federico and Luceri, Luca and Ferrara, Emilio},
+  journal = {First Monday},
+  volume  = {29},
+  number  = {11},
+  year    = {2024},
+  doi     = {10.5210/fm.v29i11.13831}
+}`
+      },
+      {
+        slide: "17",
+        title: "What types of COVID-19 conspiracies are populated by Twitter bots?",
+        authors: "Emilio Ferrara",
+        venue: "First Monday 25(6), 2020",
+        why: "Cite for the <b>pivot speed</b> of automated networks during a crisis, and for the split between what likely-human accounts discuss (public health, risk) and what likely-bot accounts push (political conspiracy).",
+        doi: "10.5210/fm.v25i6.10633",
+        bib: `@article{ferrara2020covid,
+  title   = {What types of {COVID-19} conspiracies are populated by {Twitter} bots?},
+  author  = {Ferrara, Emilio},
+  journal = {First Monday},
+  volume  = {25},
+  number  = {6},
+  year    = {2020},
+  doi     = {10.5210/fm.v25i6.10633}
+}`
+      }
+    ]
+  },
+  {
+    sec: "03", secTitle: "Closer to home — Singapore",
+    items: [
+      {
+        slide: "21–23, 50–52",
+        title: "Cultural Targets, Structural Frames, Binding Morals: A Cross-Lingual Audit of Online Hate in Multicultural Singapore",
+        authors: "Emilio Ferrara",
+        venue: "arXiv:2606.21996, 2026 (preprint)",
+        why: "The worked example in the methods half. Cite for two things: the <b>moral grammar of hate is largely shared across languages</b>, while <b>what an audience amplifies is selective and nativist</b> — a result that only appears because production and reception were measured separately.",
+        arxiv: "2606.21996",
+        bib: `@article{ferrara2026culturaltargets,
+  title   = {Cultural Targets, Structural Frames, Binding Morals: A Cross-Lingual Audit of Online Hate in Multicultural Singapore},
+  author  = {Ferrara, Emilio},
+  journal = {arXiv preprint arXiv:2606.21996},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2606.21996}
+}`
+      }
+    ]
+  },
+  {
+    sec: "04", secTitle: "The GenAI shift",
+    items: [
+      {
+        slide: "27",
+        title: "Charting the landscape of nefarious uses of generative artificial intelligence for online election interference",
+        authors: "Emilio Ferrara",
+        venue: "First Monday 30(6), 2025",
+        why: "The taxonomy: deepfakes, AI-powered botnets, targeted misinformation, synthetic identities, with mechanisms and countermeasures. <b>Cite the 2025 First Monday version</b>, not the 2024 SSRN preprint that circulates more widely.",
+        doi: "10.5210/fm.v30i6.14188",
+        bib: `@article{ferrara2025nefarious,
+  title   = {Charting the landscape of nefarious uses of generative artificial intelligence for online election interference},
+  author  = {Ferrara, Emilio},
+  journal = {First Monday},
+  volume  = {30},
+  number  = {6},
+  year    = {2025},
+  doi     = {10.5210/fm.v30i6.14188}
+}`
+      },
+      {
+        slide: "29, 30",
+        title: "The Generative AI Paradox: GenAI and the Erosion of Trust, the Corrosion of Information Verification, and the Demise of Truth",
+        authors: "Emilio Ferrara",
+        venue: "Future Internet 18(2), 73, 2026",
+        why: "The economic argument: the cost of <b>generating</b> convincing evidence falls to nearly zero while the cost of <b>verifying</b> it grows without bound. Cite this for why the problem is a shift in shape, not an increase in volume.",
+        doi: "10.3390/fi18020073",
+        bib: `@article{ferrara2026genaiparadox,
+  title   = {The Generative {AI} Paradox: {GenAI} and the Erosion of Trust, the Corrosion of Information Verification, and the Demise of Truth},
+  author  = {Ferrara, Emilio},
+  journal = {Future Internet},
+  volume  = {18},
+  number  = {2},
+  pages   = {73},
+  year    = {2026},
+  doi     = {10.3390/fi18020073}
+}`
+      },
+      {
+        slide: "31",
+        title: "How Far Will They Go? Red-Teaming Online Influence with Large Language Models",
+        authors: "Daniel C. Ruiz, Anna Serbina, Ashwin Rao, Emilio Ferrara, Luca Luceri",
+        venue: "arXiv:2605.22880, 2026 (preprint)",
+        why: "Cite for the empirical answer to “will off-the-shelf models do this?” — a red-teaming study probing whether open-weight models will produce persuasive political content across the opinion spectrum.",
+        arxiv: "2605.22880",
+        bib: `@article{ruiz2026redteaming,
+  title   = {How Far Will They Go? Red-Teaming Online Influence with Large Language Models},
+  author  = {Ruiz, Daniel C. and Serbina, Anna and Rao, Ashwin and Ferrara, Emilio and Luceri, Luca},
+  journal = {arXiv preprint arXiv:2605.22880},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2605.22880}
+}`
+      },
+      {
+        slide: "37",
+        title: "Defeat Devices in AI Systems",
+        authors: "Emilio Ferrara",
+        venue: "Future Internet 18(7), 339, 2026",
+        why: "Cite when arguing that a benchmark result may not describe deployed behavior: systems can behave differently in <b>evaluation</b> versus <b>deployment</b> contexts. The term is borrowed from emissions regulation (40 CFR Part 86; EU Reg. 715/2007 Art. 3(10)).",
+        doi: "10.3390/fi18070339",
+        bib: `@article{ferrara2026defeatdevices,
+  title   = {Defeat Devices in {AI} Systems},
+  author  = {Ferrara, Emilio},
+  journal = {Future Internet},
+  volume  = {18},
+  number  = {7},
+  pages   = {339},
+  year    = {2026},
+  doi     = {10.3390/fi18070339}
+}`
+      }
+    ]
+  },
+  {
+    sec: "05", secTitle: "Era of Agents — persuasion and the fragility of simulation",
+    items: [
+      {
+        slide: "35",
+        title: "LLMs can persuade only psychologically susceptible humans on societal issues, via trust in AI and emotional appeals, amid logical fallacies",
+        authors: "Alexis Carrillo, Salvatore Citraro, Ali Aghazhadeh Ardebili, Enrique Taietta, Giulio Rossetti, Emilio Ferrara, Giuseppe Alessandro Veltri, Massimo Stella",
+        venue: "arXiv:2604.16935, 2026 (preprint)",
+        why: "The Talk2AI study — longitudinal conversations with full psychometric profiling. Cite for the qualified answer on machine persuasion: it works, but <b>selectively</b>, conditional on the person rather than uniformly.",
+        arxiv: "2604.16935",
+        bib: `@article{carrillo2026llmpersuasion,
+  title   = {LLMs can persuade only psychologically susceptible humans on societal issues, via trust in AI and emotional appeals, amid logical fallacies},
+  author  = {Carrillo, Alexis and Citraro, Salvatore and Ardebili, Ali Aghazhadeh and Taietta, Enrique and Rossetti, Giulio and Ferrara, Emilio and Veltri, Giuseppe Alessandro and Stella, Massimo},
+  journal = {arXiv preprint arXiv:2604.16935},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2604.16935}
+}`
+      },
+      {
+        slide: "36, 54",
+        title: "Stop Drawing Scientific Claims from LLM Social Simulations Without Robustness Audits",
+        authors: "Jinyi Ye, Lei Cao, Ding Chen, Emilio Ferrara",
+        venue: "arXiv:2605.18890, 2026 (preprint)",
+        why: "The one to cite <b>before you run an agent simulation</b>: surface choices that look cosmetic — persona wording, action ordering, decoding settings — swing population-level outcomes. A single run is a sample of one from a distribution nobody has characterized.",
+        arxiv: "2605.18890",
+        bib: `@article{ye2026robustnessaudits,
+  title   = {Stop Drawing Scientific Claims from LLM Social Simulations Without Robustness Audits},
+  author  = {Ye, Jinyi and Cao, Lei and Chen, Ding and Ferrara, Emilio},
+  journal = {arXiv preprint arXiv:2605.18890},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2605.18890}
+}`
+      }
+    ]
+  },
+  {
+    sec: "06", secTitle: "Era of Agents — coordination and the machine audience",
+    items: [
+      {
+        slide: "33, 34",
+        title: "Emergent Coordinated Behaviors in Networked LLM Agents: Modeling the Strategic Dynamics of Information Operations",
+        authors: "Gian Marco Orlando, Jinyi Ye, Valerio La Gatta, Mahdi Saeedi, Vincenzo Moscato, Emilio Ferrara, Luca Luceri",
+        venue: "WWW '26 · also arXiv:2510.25003",
+        why: "Cite for the central agent-era finding: LLM agents placed in an organic community <b>coordinate and devise tactics that were never scripted</b>, with cascades deepening as awareness grows. A simulated X-like platform with operator and ordinary-user agents.",
+        doi: "10.1145/3774904.3792580",
+        arxiv: "2510.25003",
+        bib: `@inproceedings{orlando2026emergent,
+  title     = {Emergent Coordinated Behaviors in Networked {LLM} Agents: Modeling the Strategic Dynamics of Information Operations},
+  author    = {Orlando, Gian Marco and Ye, Jinyi and La Gatta, Valerio and Saeedi, Mahdi and Moscato, Vincenzo and Ferrara, Emilio and Luceri, Luca},
+  booktitle = {Proceedings of the ACM Web Conference 2026 (WWW '26)},
+  year      = {2026},
+  doi       = {10.1145/3774904.3792580},
+  eprint    = {2510.25003},
+  archivePrefix = {arXiv}
+}`
+      },
+      {
+        slide: "37",
+        title: "Lost Before Translation: Social Information Transmission and Survival in AI-AI Communication",
+        authors: "Bijean Ghafouri, Emilio Ferrara",
+        venue: "arXiv:2602.17674, 2026 (preprint)",
+        why: "A telephone-game study of what happens when AI systems relay information to other AI systems: tone converges toward the moderate, and <b>content survives selectively</b>. Cite for degradation in machine-to-machine relay chains.",
+        arxiv: "2602.17674",
+        bib: `@article{ghafouri2026lost,
+  title         = {Lost Before Translation: Social Information Transmission and Survival in AI-AI Communication},
+  author        = {Ghafouri, Bijean and Ferrara, Emilio},
+  journal       = {arXiv preprint arXiv:2602.17674},
+  year          = {2026},
+  doi           = {10.48550/arXiv.2602.17674},
+  eprint        = {2602.17674},
+  archivePrefix = {arXiv}
+}`
+      }
+    ]
+  },
+  {
+    sec: "07", secTitle: "Defense",
+    items: [
+      {
+        slide: "38",
+        title: "Cross-Platform Narrative Prediction: Leveraging Platform-Invariant Discourse Networks",
+        authors: "Patrick Gerard, Luca Luceri, Leonardo Blas, Emilio Ferrara",
+        venue: "arXiv:2510.09464, 2025 (preprint)",
+        why: "The defender's-edge result: the same narrative wears a platform-specific costume, but the underlying discourse structure is stable enough to predict where it surfaces next. Cite for <b>cross-platform early warning</b>.",
+        arxiv: "2510.09464",
+        bib: `@article{gerard2025crossplatform,
+  title   = {Cross-Platform Narrative Prediction: Leveraging Platform-Invariant Discourse Networks},
+  author  = {Gerard, Patrick and Luceri, Luca and Blas, Leonardo and Ferrara, Emilio},
+  journal = {arXiv preprint arXiv:2510.09464},
+  year    = {2025},
+  url     = {https://arxiv.org/abs/2510.09464}
+}`
+      },
+      {
+        slide: "41",
+        title: "Pluralis v0.1: Towards a Multicultural, Multimodal, Multilingual Benchmark for AI Risk and Reliability",
+        authors: "Alicia Parrish, Rajat Shinde, Sanket Badhe, Xinyi Bai, Sree Bhargavi Balija, Hua-Rong Chu, Emilio Ferrara, and others (MLCommons AIRR)",
+        venue: "arXiv:2607.06196, 2026 (preprint)",
+        why: "The MLCommons AI Risk &amp; Reliability benchmark built by <b>native authoring per locale</b> rather than machine translation. Cite for the argument that safety evaluators themselves degrade across cultures, and that evaluation capacity is infrastructure.",
+        arxiv: "2607.06196",
+        bib: `@article{parrish2026pluralis,
+  title   = {Pluralis v0.1: Towards a Multicultural, Multimodal, Multilingual Benchmark for {AI} Risk and Reliability},
+  author  = {Parrish, Alicia and Shinde, Rajat and Badhe, Sanket and Bai, Xinyi and Balija, Sree Bhargavi and Chu, Hua-Rong and Ferrara, Emilio and others},
+  journal = {arXiv preprint arXiv:2607.06196},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2607.06196}
+}`
+      }
+    ]
+  },
+  {
+    sec: "08", secTitle: "Primary sources — the official record",
+    items: [
+      {
+        slide: "9",
+        title: "Report on Russian Active Measures Campaigns and Interference in the 2016 U.S. Election, Volume 2: Russia's Use of Social Media, with Additional Views",
+        authors: "U.S. Senate Select Committee on Intelligence",
+        venue: "116th Congress, released 8 October 2019",
+        why: "The Senate's Russia investigation cites this lab's election-bots work twice: <b>Bessi &amp; Ferrara (2016)</b> at footnote 39 and <b>The Rise of Social Bots</b> at footnote 289. Useful as evidence that academic bot research entered the official record.",
+        url: "https://www.intelligence.senate.gov/wp-content/uploads/2024/08/sites-default-files-documents-report-volume2.pdf",
+        bib: `@techreport{ssci2019volume2,
+  title       = {Report of the Select Committee on Intelligence, United States Senate, on Russian Active Measures Campaigns and Interference in the 2016 U.S. Election, Volume 2: Russia's Use of Social Media, with Additional Views},
+  author      = {{U.S. Senate Select Committee on Intelligence}},
+  institution = {United States Senate},
+  year        = {2019},
+  type        = {Senate Report},
+  url         = {https://www.intelligence.senate.gov/wp-content/uploads/2024/08/sites-default-files-documents-report-volume2.pdf}
+}`
+      },
+      {
+        slide: "12",
+        title: "Exposing Russia's Effort to Sow Discord Online: The Internet Research Agency and Advertisements",
+        authors: "U.S. House Permanent Select Committee on Intelligence (Minority staff)",
+        venue: "Web release; IRA-linked Twitter handles released 1 November 2017",
+        why: "The source of the IRA account list underpinning most troll-farm research. Cite as a <b>committee web release, not a numbered report</b> — the handle list is from 2017, the Facebook ad set from 2018.",
+        url: "https://democrats-intelligence.house.gov/social-media-content/",
+        bib: `@misc{hpsci2017ira,
+  title        = {Exposing Russia's Effort to Sow Discord Online: The Internet Research Agency and Advertisements},
+  author       = {{U.S. House of Representatives, Permanent Select Committee on Intelligence}},
+  year         = {2017},
+  howpublished = {\\url{https://democrats-intelligence.house.gov/social-media-content/}},
+  note         = {Minority staff release; Twitter handle list released 1 November 2017}
+}`
+      }
+    ]
+  }
+];
+
+function esc(s) {
+  return s.replace(/&(?!\w+;|#\d+;)/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function render() {
+  const root = document.getElementById("body");
+  DATA.forEach(sec => {
+    const el = document.createElement("section");
+    let html = `<div class="sec-head"><span class="sec-num">${sec.sec}</span><h2>${sec.secTitle}</h2></div>`;
+    sec.items.forEach(it => {
+      const links = [];
+      if (it.doi) links.push(`<a href="https://doi.org/${it.doi}" target="_blank" rel="noopener">DOI</a>`);
+      if (it.arxiv) links.push(`<a href="https://arxiv.org/abs/${it.arxiv}" target="_blank" rel="noopener">arXiv</a>`);
+      if (it.url) links.push(`<a href="${it.url}" target="_blank" rel="noopener">Document</a>`);
+      links.push(`<button onclick="toggleBib(this)">BibTeX</button>`);
+      links.push(`<button onclick="copyBib(this)">Copy</button>`);
+      html += `<article class="entry" data-bib="${encodeURIComponent(it.bib)}">
+        <h3>${it.title}</h3>
+        <p class="authors">${it.authors}</p>
+        <p class="venue">${it.venue}</p>
+        <p class="why">${it.why}</p>
+        <div class="links">${links.join("")}<span class="slideref">SLIDE ${it.slide}</span></div>
+        <pre>${esc(it.bib)}</pre>
+      </article>`;
+    });
+    el.innerHTML = html;
+    root.appendChild(el);
+  });
+}
+
+function toggleBib(btn) {
+  btn.closest(".entry").classList.toggle("open");
+}
+
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove("show"), 1600);
+}
+
+async function writeClip(text, msg) {
+  try {
+    await navigator.clipboard.writeText(text);
+    toast(msg);
+  } catch (e) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); toast(msg); }
+    catch (e2) { toast("Select the text to copy"); }
+    document.body.removeChild(ta);
+  }
+}
+
+function copyBib(btn) {
+  const bib = decodeURIComponent(btn.closest(".entry").dataset.bib);
+  writeClip(bib, "BibTeX copied");
+}
+
+function copyAll() {
+  const all = DATA.flatMap(s => s.items.map(i => i.bib)).join("\n\n");
+  writeClip(all, DATA.flatMap(s => s.items).length + " entries copied");
+}
+
+function toggleAll() {
+  const entries = [...document.querySelectorAll(".entry")];
+  const anyClosed = entries.some(e => !e.classList.contains("open"));
+  entries.forEach(e => e.classList.toggle("open", anyClosed));
+  document.getElementById("expandBtn").textContent = anyClosed ? "Hide all BibTeX" : "Show all BibTeX";
+}
+
+render();
+</script>
+</body></html>
