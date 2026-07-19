@@ -207,7 +207,7 @@
     <p class="byline">
       Emilio Ferrara · University of Southern California ·
       <a href="mailto:emiliofe@usc.edu">emiliofe@usc.edu</a><br>
-      All entries verified against Crossref and the arXiv API on 18 July 2026.
+      All entries verified against Crossref and the arXiv API, 18\u201319 July 2026.
     </p>
     <div class="toolbar">
       <button class="tool" onclick="copyAll()">Copy all BibTeX</button>
@@ -282,6 +282,40 @@ const DATA = [
   number  = {11},
   year    = {2016},
   doi     = {10.5210/fm.v21i11.7090}
+}`
+      },
+      {
+        slide: "6",
+        title: "Botometer 101: social bot practicum for computational social scientists",
+        authors: "Kai-Cheng Yang, Emilio Ferrara, Filippo Menczer",
+        venue: "Journal of Computational Social Science 5, 1511–1528, 2022",
+        why: "The hands-on tutorial behind the tool on this slide. Cite it when you <b>use</b> Botometer rather than when you discuss bot detection in principle.",
+        doi: "10.1007/s42001-022-00177-5",
+        bib: `@article{yang2022botometer101,
+  title   = {Botometer 101: social bot practicum for computational social scientists},
+  author  = {Yang, Kai-Cheng and Ferrara, Emilio and Menczer, Filippo},
+  journal = {Journal of Computational Social Science},
+  volume  = {5},
+  pages   = {1511--1528},
+  year    = {2022},
+  doi     = {10.1007/s42001-022-00177-5}
+}`
+      },
+      {
+        slide: "7",
+        title: "Social bot detection in the age of ChatGPT: Challenges and opportunities",
+        authors: "Emilio Ferrara",
+        venue: "First Monday 28(6), 2023",
+        why: "The bridge from this act to the GenAI act: why <b>every accuracy number is a snapshot of one arms-race era</b>, and what LLM-driven accounts do to the detectors built before them.",
+        doi: "10.5210/fm.v28i6.13185",
+        bib: `@article{ferrara2023botdetection,
+  title   = {Social bot detection in the age of {ChatGPT}: Challenges and opportunities},
+  author  = {Ferrara, Emilio},
+  journal = {First Monday},
+  volume  = {28},
+  number  = {6},
+  year    = {2023},
+  doi     = {10.5210/fm.v28i6.13185}
 }`
       },
       {
@@ -375,7 +409,41 @@ const DATA = [
 }`
       },
       {
-        slide: "18, 27",
+        slide: "17",
+        title: "COVID-19 Vaccine Hesitancy on Social Media: Building a Public Twitter Data Set of Antivaccine Content, Vaccine Misinformation, and Conspiracies",
+        authors: "Goran Muric, Yusong Wu, Emilio Ferrara",
+        venue: "JMIR Public Health and Surveillance 7(11), e30642, 2021",
+        why: "The infodemic act's data backbone: the most-used public dataset of anti-vaccine content. Cite it when you need <b>ready-made infodemic data</b> rather than the bots finding.",
+        doi: "10.2196/30642",
+        bib: `@article{muric2021vaccine,
+  title   = {{COVID}-19 Vaccine Hesitancy on Social Media: Building a Public {Twitter} Data Set of Antivaccine Content, Vaccine Misinformation, and Conspiracies},
+  author  = {Muric, Goran and Wu, Yusong and Ferrara, Emilio},
+  journal = {JMIR Public Health and Surveillance},
+  volume  = {7},
+  number  = {11},
+  pages   = {e30642},
+  year    = {2021},
+  doi     = {10.2196/30642}
+}`
+      },
+      {
+        slide: "18",
+        title: "Propaganda and Misinformation on Facebook and Twitter during the Russian Invasion of Ukraine",
+        authors: "Francesco Pierri, Luca Luceri, Nikhil Jindal, Emilio Ferrara",
+        venue: "WebSci '23, 65–74, 2023",
+        why: "The wartime case of the cross-platform claim: propaganda moving between Facebook and Twitter during the invasion. Pair with the companion <b>Ukraine dataset</b> (Chen &amp; Ferrara, ICWSM '23, DOI 10.1609/icwsm.v17i1.22208).",
+        doi: "10.1145/3578503.3583597",
+        bib: `@inproceedings{pierri2023propaganda,
+  title     = {Propaganda and Misinformation on {Facebook} and {Twitter} during the {Russian} Invasion of {Ukraine}},
+  author    = {Pierri, Francesco and Luceri, Luca and Jindal, Nikhil and Ferrara, Emilio},
+  booktitle = {Proceedings of the 15th ACM Web Science Conference},
+  pages     = {65--74},
+  year      = {2023},
+  doi       = {10.1145/3578503.3583597}
+}`
+      },
+      {
+        slide: "18, 24",
         title: "Uncovering coordinated cross-platform information operations: Threatening the integrity of the 2024 U.S. presidential election",
         authors: "Marco Minici, Federico Cinus, Luca Luceri, Emilio Ferrara",
         venue: "First Monday 29(11), 2024",
@@ -411,30 +479,75 @@ const DATA = [
     ]
   },
   {
-    sec: "03", secTitle: "Closer to home — Singapore",
+    sec: "03", secTitle: "The GenAI shift",
     items: [
       {
-        slide: "21–23, 49–52",
-        title: "Cultural Targets, Structural Frames, Binding Morals: A Cross-Lingual Audit of Online Hate in Multicultural Singapore",
+        slide: "22",
+        title: "GenAI against humanity: nefarious applications of generative artificial intelligence and large language models",
         authors: "Emilio Ferrara",
-        venue: "arXiv:2606.21996, 2026 (preprint)",
-        why: "The worked example in the methods half. Cite for two things: the <b>moral grammar of hate is largely shared across languages</b>, while <b>what an audience amplifies is selective and nativist</b> — a result that only appears because production and reception were measured separately.",
-        arxiv: "2606.21996",
-        bib: `@article{ferrara2026culturaltargets,
-  title   = {Cultural Targets, Structural Frames, Binding Morals: A Cross-Lingual Audit of Online Hate in Multicultural Singapore},
+        venue: "Journal of Computational Social Science 7, 549–569, 2024",
+        why: "The full abuse landscape, of which elections are one corner: the mind-map on this slide is its Figure 2. Cite for the <b>general taxonomy of GenAI misuse</b>; the election paper below is the domain-specific companion.",
+        doi: "10.1007/s42001-024-00250-1",
+        bib: `@article{ferrara2024genai,
+  title   = {GenAI against humanity: nefarious applications of generative artificial intelligence and large language models},
   author  = {Ferrara, Emilio},
-  journal = {arXiv preprint arXiv:2606.21996},
-  year    = {2026},
-  url     = {https://arxiv.org/abs/2606.21996}
+  journal = {Journal of Computational Social Science},
+  volume  = {7},
+  pages   = {549--569},
+  year    = {2024},
+  doi     = {10.1007/s42001-024-00250-1}
 }`
-      }
-    ]
-  },
-  {
-    sec: "04", secTitle: "The GenAI shift",
-    items: [
+      },
+      {
+        slide: "25",
+        title: "Exposing Cross-Platform Coordinated Inauthentic Activity in the Run-Up to the 2024 U.S. Election",
+        authors: "Federico Cinus, Marco Minici, Luca Luceri, Emilio Ferrara",
+        venue: "WWW '25, 541–559, 2025",
+        why: "The figure on this slide: one URL-co-sharing pass linking Telegram channels, partisan X accounts, and Facebook pages into a <b>single coordinated structure no single-platform monitor can see</b>.",
+        doi: "10.1145/3696410.3714698",
+        bib: `@inproceedings{cinus2025exposing,
+  title     = {Exposing Cross-Platform Coordinated Inauthentic Activity in the Run-Up to the 2024 {U.S.} Election},
+  author    = {Cinus, Federico and Minici, Marco and Luceri, Luca and Ferrara, Emilio},
+  booktitle = {Proceedings of the ACM on Web Conference 2025},
+  pages     = {541--559},
+  year      = {2025},
+  doi       = {10.1145/3696410.3714698}
+}`
+      },
       {
         slide: "26",
+        title: "Auditing Political Exposure Bias: Algorithmic Amplification on Twitter/X During the 2024 U.S. Presidential Election",
+        authors: "Jinyi Ye, Luca Luceri, Emilio Ferrara",
+        venue: "FAccT '25, 2025",
+        why: "The other actor in 2024: the platform's own ranking. Cite for <b>algorithmic amplification and exposure inequality</b>; operators manipulate, curation amplifies, and an account of the cycle needs both.",
+        doi: "10.1145/3715275.3732159",
+        bib: `@inproceedings{ye2025auditing,
+  title     = {Auditing Political Exposure Bias: Algorithmic Amplification on {Twitter/X} During the 2024 {U.S.} Presidential Election},
+  author    = {Ye, Jinyi and Luceri, Luca and Ferrara, Emilio},
+  booktitle = {Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency},
+  year      = {2025},
+  doi       = {10.1145/3715275.3732159}
+}`
+      },
+      {
+        slide: "27",
+        title: "Factuality challenges in the era of large language models and opportunities for fact-checking",
+        authors: "Isabelle Augenstein, Timothy Baldwin, Meeyoung Cha, Tanmoy Chakraborty, Giovanni Luca Ciampaglia, David Corney, et al., incl. Emilio Ferrara",
+        venue: "Nature Machine Intelligence 6, 852–863, 2024",
+        why: "The verification side of the paradox on this slide, argued by a large consortium: why <b>fact-checking itself strains</b> when generation is free. Cite for the institutional response, not the threat.",
+        doi: "10.1038/s42256-024-00881-z",
+        bib: `@article{augenstein2024factuality,
+  title   = {Factuality challenges in the era of large language models and opportunities for fact-checking},
+  author  = {Augenstein, Isabelle and Baldwin, Timothy and Cha, Meeyoung and Chakraborty, Tanmoy and Ciampaglia, Giovanni Luca and Corney, David and others},
+  journal = {Nature Machine Intelligence},
+  volume  = {6},
+  pages   = {852--863},
+  year    = {2024},
+  doi     = {10.1038/s42256-024-00881-z}
+}`
+      },
+      {
+        slide: "23",
         title: "Charting the landscape of nefarious uses of generative artificial intelligence for online election interference",
         authors: "Emilio Ferrara",
         venue: "First Monday 30(6), 2025",
@@ -451,7 +564,7 @@ const DATA = [
 }`
       },
       {
-        slide: "28, 29",
+        slide: "27, 28",
         title: "The Generative AI Paradox: GenAI and the Erosion of Trust, the Corrosion of Information Verification, and the Demise of Truth",
         authors: "Emilio Ferrara",
         venue: "Future Internet 18(2), 73, 2026",
@@ -469,7 +582,7 @@ const DATA = [
 }`
       },
       {
-        slide: "30",
+        slide: "29",
         title: "How Far Will They Go? Red-Teaming Online Influence with Large Language Models",
         authors: "Daniel C. Ruiz, Anna Serbina, Ashwin Rao, Emilio Ferrara, Luca Luceri",
         venue: "arXiv:2605.22880, 2026 (preprint)",
@@ -504,8 +617,25 @@ const DATA = [
     ]
   },
   {
-    sec: "05", secTitle: "Era of Agents — persuasion and the fragility of simulation",
+    sec: "04", secTitle: "Era of Agents — persuasion and the fragility of simulation",
     items: [
+      {
+        slide: "31",
+        title: "Should ChatGPT be Biased? Challenges and Risks of Bias in Large Language Models",
+        authors: "Emilio Ferrara",
+        venue: "First Monday 28(11), 2023",
+        why: "The question under the whole agents act: where LLM bias enters (data, algorithms, labeling, product design, policy) and how it shows up. Cite it for the framing that <b>\u201cunbiased\u201d is not on the menu; the choice of bias is the design decision</b>.",
+        doi: "10.5210/fm.v28i11.13346",
+        bib: `@article{ferrara2023chatgptbias,
+  title   = {Should {ChatGPT} be Biased? Challenges and Risks of Bias in Large Language Models},
+  author  = {Ferrara, Emilio},
+  journal = {First Monday},
+  volume  = {28},
+  number  = {11},
+  year    = {2023},
+  doi     = {10.5210/fm.v28i11.13346}
+}`
+      },
       {
         slide: "34",
         title: "LLMs can persuade only psychologically susceptible humans on societal issues, via trust in AI and emotional appeals, amid logical fallacies",
@@ -522,7 +652,7 @@ const DATA = [
 }`
       },
       {
-        slide: "35, 54",
+        slide: "35, 58",
         title: "Stop Drawing Scientific Claims from LLM Social Simulations Without Robustness Audits",
         authors: "Jinyi Ye, Lei Cao, Ding Chen, Emilio Ferrara",
         venue: "arXiv:2605.18890, 2026 (preprint)",
@@ -539,7 +669,7 @@ const DATA = [
     ]
   },
   {
-    sec: "06", secTitle: "Era of Agents — coordination and the machine audience",
+    sec: "05", secTitle: "Era of Agents — coordination and the machine audience",
     items: [
       {
         slide: "32, 33",
@@ -579,7 +709,7 @@ const DATA = [
     ]
   },
   {
-    sec: "07", secTitle: "Defense",
+    sec: "06", secTitle: "Defense",
     items: [
       {
         slide: "40",
@@ -614,7 +744,45 @@ const DATA = [
     ]
   },
   {
-    sec: "08", secTitle: "Primary sources — the official record",
+    sec: "07", secTitle: "Closer to home — Singapore",
+    items: [
+      {
+        slide: "44–46, 53–56",
+        title: "Cultural Targets, Structural Frames, Binding Morals: A Cross-Lingual Audit of Online Hate in Multicultural Singapore",
+        authors: "Emilio Ferrara",
+        venue: "arXiv:2606.21996, 2026 (preprint)",
+        why: "The worked example in the methods half. Cite for two things: the <b>moral grammar of hate is largely shared across languages</b>, while <b>what an audience amplifies is selective and nativist</b> — a result that only appears because production and reception were measured separately.",
+        arxiv: "2606.21996",
+        bib: `@article{ferrara2026culturaltargets,
+  title   = {Cultural Targets, Structural Frames, Binding Morals: A Cross-Lingual Audit of Online Hate in Multicultural Singapore},
+  author  = {Ferrara, Emilio},
+  journal = {arXiv preprint arXiv:2606.21996},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2606.21996}
+}`
+      }
+    ]
+  },
+  {
+    sec: "08", secTitle: "The archive behind the methods act",
+    items: [
+      {
+        slide: "49",
+        title: "Five Myths About Influence Operations: What 25 Million Tweets Across Seven State Campaigns Reveal",
+        authors: "Emilio Ferrara",
+        venue: "Preprint, 2026 (under review)",
+        why: "The 7-campaign, 25M-tweet takedown archive named on the data-access slide is this paper's corpus. Cite it for <b>what the archive route actually yields</b>; and it is the talk's IO material condensed into five corrections.",
+        bib: `@article{ferrara2026fivemyths,
+  title = {Five Myths About Influence Operations: What 25 Million Tweets Across Seven State Campaigns Reveal},
+  author = {Ferrara, Emilio},
+  journal = {Preprint, under review},
+  year = {2026}
+}`
+      }
+    ]
+  },
+  {
+    sec: "09", secTitle: "Primary sources — the official record",
     items: [
       {
         slide: "9",
