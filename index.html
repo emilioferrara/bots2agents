@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
-<title>From Bots to Agents — References</title>
+<title>From Bots to Agents — Research Index</title>
 <style>
   :root {
     color-scheme: light dark;
@@ -197,14 +197,15 @@
 <div class="wrap">
   <header>
     <div class="tick"></div>
-    <p class="eyebrow">SICSS Singapore 2026 · Closing lecture · Appendix</p>
+    <p class="eyebrow">Research index · Bots, influence operations, and AI agents</p>
     <h1>From Bots to Agents</h1>
     <p class="standfirst">
-      A curated index of the research behind the lecture: bot detection and its limits,
+      A curated index of research on bot detection and its limits,
       coordinated inauthentic behavior, influence operations, and the shift from scripted
       automation to LLM-driven agents. Each entry carries a plain-language note on what the
       paper actually shows and what it is good for citing, plus a citation-ready BibTeX
-      record. Grouped in the order the papers appear in the talk.
+      record. Grouped by era, from the bot-detection years through the generative-AI shift
+      to LLM agents and the defenses that follow.
     </p>
     <p class="byline">
       <a href="/">Emilio Ferrara</a> · University of Southern California ·
@@ -243,7 +244,8 @@
   </div>
 
   <footer>
-    Appendix to the SICSS-Singapore 2026 closing lecture, 20 July 2026, NUS.
+    Originally compiled as the companion to the "From Bots to Agents" closing lecture at
+    SICSS-Singapore, 20 July 2026, NUS, and maintained since as a standing reference.
     Preprints are linked to arXiv; published versions are linked by DOI. Where a paper
     exists in both forms, cite the published version.
   </footer>
@@ -257,7 +259,6 @@ const DATA = [
     sec: "01", secTitle: "Era of Bots — detection as classification",
     items: [
       {
-        slide: "5, 7",
         title: "The rise of social bots",
         authors: "Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, Alessandro Flammini",
         venue: "Communications of the ACM 59(7), 96–104, 2016",
@@ -275,7 +276,6 @@ const DATA = [
 }`
       },
       {
-        slide: "8, 9",
         title: "Social bots distort the 2016 U.S. Presidential election online discussion",
         authors: "Alessandro Bessi, Emilio Ferrara",
         venue: "First Monday 21(11), 2016",
@@ -292,11 +292,10 @@ const DATA = [
 }`
       },
       {
-        slide: "6",
         title: "Botometer 101: social bot practicum for computational social scientists",
         authors: "Kai-Cheng Yang, Emilio Ferrara, Filippo Menczer",
         venue: "Journal of Computational Social Science 5, 1511–1528, 2022",
-        why: "The hands-on tutorial behind the tool on this slide. Cite it when you <b>use</b> Botometer rather than when you discuss bot detection in principle.",
+        why: "The hands-on tutorial for the Botometer tool. Cite it when you <b>use</b> Botometer rather than when you discuss bot detection in principle.",
         doi: "10.1007/s42001-022-00177-5",
         bib: `@article{yang2022botometer101,
   title   = {Botometer 101: social bot practicum for computational social scientists},
@@ -309,7 +308,6 @@ const DATA = [
 }`
       },
       {
-        slide: "7",
         title: "Social bot detection in the age of ChatGPT: Challenges and opportunities",
         authors: "Emilio Ferrara",
         venue: "First Monday 28(6), 2023",
@@ -326,7 +324,6 @@ const DATA = [
 }`
       },
       {
-        slide: "10",
         title: "Detecting Social Media Manipulation in Low-Resource Languages",
         authors: "Samar Haider, Luca Luceri, Ashok Deb, Adam Badawy, Nanyun Peng, Emilio Ferrara",
         venue: "WWW '23 Companion, 1358–1364, 2023",
@@ -347,7 +344,6 @@ const DATA = [
     sec: "02", secTitle: "Era of Campaigns — reading the operator, the audience, the network",
     items: [
       {
-        slide: "13",
         title: "Linguistic Cues to Deception: Identifying Political Trolls on Social Media",
         authors: "Aseel Addawood, Adam Badawy, Kristina Lerman, Emilio Ferrara",
         venue: "ICWSM 13(1), 15–25, 2019",
@@ -365,7 +361,6 @@ const DATA = [
 }`
       },
       {
-        slide: "14",
         title: "Detecting Troll Behavior via Inverse Reinforcement Learning: A Case Study of Russian Trolls in the 2016 US Election",
         authors: "Luca Luceri, Silvia Giordano, Emilio Ferrara",
         venue: "ICWSM 14(1), 417–427, 2020",
@@ -383,7 +378,6 @@ const DATA = [
 }`
       },
       {
-        slide: "15",
         title: "Who Falls for Online Political Manipulation?",
         authors: "Adam Badawy, Kristina Lerman, Emilio Ferrara",
         venue: "WWW '19 Companion, 162–168, 2019",
@@ -399,7 +393,6 @@ const DATA = [
 }`
       },
       {
-        slide: "16",
         title: "Characterizing social media manipulation in the 2020 U.S. presidential election",
         authors: "Emilio Ferrara, Herbert Chang, Emily Chen, Goran Muric, Jaimin Patel",
         venue: "First Monday 25(11), 2020",
@@ -416,7 +409,6 @@ const DATA = [
 }`
       },
       {
-        slide: "17",
         title: "COVID-19 Vaccine Hesitancy on Social Media: Building a Public Twitter Data Set of Antivaccine Content, Vaccine Misinformation, and Conspiracies",
         authors: "Goran Muric, Yusong Wu, Emilio Ferrara",
         venue: "JMIR Public Health and Surveillance 7(11), e30642, 2021",
@@ -434,7 +426,6 @@ const DATA = [
 }`
       },
       {
-        slide: "18",
         title: "Propaganda and Misinformation on Facebook and Twitter during the Russian Invasion of Ukraine",
         authors: "Francesco Pierri, Luca Luceri, Nikhil Jindal, Emilio Ferrara",
         venue: "WebSci '23, 65–74, 2023",
@@ -450,7 +441,6 @@ const DATA = [
 }`
       },
       {
-        slide: "18, 24",
         title: "Uncovering coordinated cross-platform information operations: Threatening the integrity of the 2024 U.S. presidential election",
         authors: "Marco Minici, Federico Cinus, Luca Luceri, Emilio Ferrara",
         venue: "First Monday 29(11), 2024",
@@ -467,7 +457,6 @@ const DATA = [
 }`
       },
       {
-        slide: "17",
         title: "What types of COVID-19 conspiracies are populated by Twitter bots?",
         authors: "Emilio Ferrara",
         venue: "First Monday 25(6), 2020",
@@ -489,11 +478,10 @@ const DATA = [
     sec: "03", secTitle: "The GenAI shift",
     items: [
       {
-        slide: "22",
         title: "GenAI against humanity: nefarious applications of generative artificial intelligence and large language models",
         authors: "Emilio Ferrara",
         venue: "Journal of Computational Social Science 7, 549–569, 2024",
-        why: "The full abuse landscape, of which elections are one corner: the intent-by-harm matrix on this slide is its Figure 1. Cite for the <b>general taxonomy of GenAI misuse</b>; the election paper below is the domain-specific companion.",
+        why: "The full abuse landscape, of which elections are one corner: its Figure 1 lays that landscape out as an intent-by-harm matrix. Cite for the <b>general taxonomy of GenAI misuse</b>; the election paper below is the domain-specific companion.",
         doi: "10.1007/s42001-024-00250-1",
         bib: `@article{ferrara2024genai,
   title   = {GenAI against humanity: nefarious applications of generative artificial intelligence and large language models},
@@ -506,11 +494,10 @@ const DATA = [
 }`
       },
       {
-        slide: "25",
         title: "Exposing Cross-Platform Coordinated Inauthentic Activity in the Run-Up to the 2024 U.S. Election",
         authors: "Federico Cinus, Marco Minici, Luca Luceri, Emilio Ferrara",
         venue: "WWW '25, 541–559, 2025",
-        why: "The figure on this slide: one URL-co-sharing pass linking Telegram channels, partisan X accounts, and Facebook pages into a <b>single coordinated structure no single-platform monitor can see</b>.",
+        why: "One URL-co-sharing pass links Telegram channels, partisan X accounts, and Facebook pages into a <b>single coordinated structure no single-platform monitor can see</b>.",
         doi: "10.1145/3696410.3714698",
         bib: `@inproceedings{cinus2025exposing,
   title     = {Exposing Cross-Platform Coordinated Inauthentic Activity in the Run-Up to the 2024 {U.S.} Election},
@@ -522,7 +509,6 @@ const DATA = [
 }`
       },
       {
-        slide: "26",
         title: "Auditing Political Exposure Bias: Algorithmic Amplification on Twitter/X During the 2024 U.S. Presidential Election",
         authors: "Jinyi Ye, Luca Luceri, Emilio Ferrara",
         venue: "FAccT '25, 2025",
@@ -537,11 +523,10 @@ const DATA = [
 }`
       },
       {
-        slide: "27",
         title: "Factuality challenges in the era of large language models and opportunities for fact-checking",
         authors: "Isabelle Augenstein, Timothy Baldwin, Meeyoung Cha, Tanmoy Chakraborty, Giovanni Luca Ciampaglia, David Corney, et al., incl. Emilio Ferrara",
         venue: "Nature Machine Intelligence 6, 852–863, 2024",
-        why: "The verification side of the paradox on this slide, argued by a large consortium: why <b>fact-checking itself strains</b> when generation is free. Cite for the institutional response, not the threat.",
+        why: "The verification side of the generative-AI paradox, argued by a large consortium: why <b>fact-checking itself strains</b> when generation is free. Cite for the institutional response, not the threat.",
         doi: "10.1038/s42256-024-00881-z",
         bib: `@article{augenstein2024factuality,
   title   = {Factuality challenges in the era of large language models and opportunities for fact-checking},
@@ -554,7 +539,6 @@ const DATA = [
 }`
       },
       {
-        slide: "23",
         title: "Charting the landscape of nefarious uses of generative artificial intelligence for online election interference",
         authors: "Emilio Ferrara",
         venue: "First Monday 30(6), 2025",
@@ -571,7 +555,6 @@ const DATA = [
 }`
       },
       {
-        slide: "27, 28",
         title: "The Generative AI Paradox: GenAI and the Erosion of Trust, the Corrosion of Information Verification, and the Demise of Truth",
         authors: "Emilio Ferrara",
         venue: "Future Internet 18(2), 73, 2026",
@@ -589,7 +572,6 @@ const DATA = [
 }`
       },
       {
-        slide: "29",
         title: "How Far Will They Go? Red-Teaming Online Influence with Large Language Models",
         authors: "Daniel C. Ruiz, Anna Serbina, Ashwin Rao, Emilio Ferrara, Luca Luceri",
         venue: "arXiv:2605.22880, 2026 (preprint)",
@@ -604,7 +586,6 @@ const DATA = [
 }`
       },
       {
-        slide: "36",
         title: "Defeat Devices in AI Systems",
         authors: "Emilio Ferrara",
         venue: "Future Internet 18(7), 339, 2026",
@@ -627,7 +608,6 @@ const DATA = [
     sec: "04", secTitle: "Era of Agents — persuasion and the fragility of simulation",
     items: [
       {
-        slide: "31",
         title: "Should ChatGPT be Biased? Challenges and Risks of Bias in Large Language Models",
         authors: "Emilio Ferrara",
         venue: "First Monday 28(11), 2023",
@@ -644,7 +624,6 @@ const DATA = [
 }`
       },
       {
-        slide: "34",
         title: "LLMs can persuade only psychologically susceptible humans on societal issues, via trust in AI and emotional appeals, amid logical fallacies",
         authors: "Alexis Carrillo, Salvatore Citraro, Ali Aghazhadeh Ardebili, Enrique Taietta, Giulio Rossetti, Emilio Ferrara, Giuseppe Alessandro Veltri, Massimo Stella",
         venue: "arXiv:2604.16935, 2026 (preprint)",
@@ -659,7 +638,6 @@ const DATA = [
 }`
       },
       {
-        slide: "35, 58",
         title: "Stop Drawing Scientific Claims from LLM Social Simulations Without Robustness Audits",
         authors: "Jinyi Ye, Lei Cao, Ding Chen, Emilio Ferrara",
         venue: "arXiv:2605.18890, 2026 (preprint)",
@@ -679,7 +657,6 @@ const DATA = [
     sec: "05", secTitle: "Era of Agents — coordination and the machine audience",
     items: [
       {
-        slide: "32, 33",
         title: "Emergent Coordinated Behaviors in Networked LLM Agents: Modeling the Strategic Dynamics of Information Operations",
         authors: "Gian Marco Orlando, Jinyi Ye, Valerio La Gatta, Mahdi Saeedi, Vincenzo Moscato, Emilio Ferrara, Luca Luceri",
         venue: "WWW '26 · also arXiv:2510.25003",
@@ -697,7 +674,6 @@ const DATA = [
 }`
       },
       {
-        slide: "37",
         title: "Lost Before Translation: Social Information Transmission and Survival in AI-AI Communication",
         authors: "Bijean Ghafouri, Emilio Ferrara",
         venue: "arXiv:2602.17674, 2026 (preprint)",
@@ -719,7 +695,6 @@ const DATA = [
     sec: "06", secTitle: "Defense",
     items: [
       {
-        slide: "40",
         title: "Cross-Platform Narrative Prediction: Leveraging Platform-Invariant Discourse Networks",
         authors: "Patrick Gerard, Luca Luceri, Leonardo Blas, Emilio Ferrara",
         venue: "arXiv:2510.09464, 2025 (preprint)",
@@ -734,7 +709,6 @@ const DATA = [
 }`
       },
       {
-        slide: "41",
         title: "Pluralis v0.1: Towards a Multicultural, Multimodal, Multilingual Benchmark for AI Risk and Reliability",
         authors: "Alicia Parrish, Rajat Shinde, Sanket Badhe, Xinyi Bai, Sree Bhargavi Balija, Hua-Rong Chu, Emilio Ferrara, and others (MLCommons AIRR)",
         venue: "arXiv:2607.06196, 2026 (preprint)",
@@ -754,7 +728,6 @@ const DATA = [
     sec: "07", secTitle: "Closer to home — Singapore",
     items: [
       {
-        slide: "44–46, 53–56",
         title: "Cultural Targets, Structural Frames, Binding Morals: A Cross-Lingual Audit of Online Hate in Multicultural Singapore",
         authors: "Emilio Ferrara",
         venue: "arXiv:2606.21996, 2026 (preprint)",
@@ -771,14 +744,13 @@ const DATA = [
     ]
   },
   {
-    sec: "08", secTitle: "The archive behind the methods act",
+    sec: "08", secTitle: "The Twitter/X influence-operations archive",
     items: [
       {
-        slide: "49",
         title: "Five Myths About Influence Operations: What 25 Million Tweets Across Seven State Campaigns Reveal",
         authors: "Emilio Ferrara",
         venue: "Preprint, 2026 (under review)",
-        why: "The 7-campaign, 25M-tweet takedown archive named on the data-access slide is this paper's corpus. Cite it for <b>what the archive route actually yields</b>; and it is the talk's IO material condensed into five corrections.",
+        why: "Built on the 7-campaign, 25M-tweet platform takedown archive. Cite it for <b>what the archive route actually yields</b>; it condenses the influence-operations literature into five corrections.",
         bib: `@article{ferrara2026fivemyths,
   title = {Five Myths About Influence Operations: What 25 Million Tweets Across Seven State Campaigns Reveal},
   author = {Ferrara, Emilio},
@@ -792,7 +764,6 @@ const DATA = [
     sec: "09", secTitle: "Primary sources — the official record",
     items: [
       {
-        slide: "9",
         title: "Report on Russian Active Measures Campaigns and Interference in the 2016 U.S. Election, Volume 2: Russia's Use of Social Media, with Additional Views",
         authors: "U.S. Senate Select Committee on Intelligence",
         venue: "116th Congress, released 8 October 2019",
@@ -808,7 +779,6 @@ const DATA = [
 }`
       },
       {
-        slide: "12",
         title: "Exposing Russia's Effort to Sow Discord Online: The Internet Research Agency and Advertisements",
         authors: "U.S. House Permanent Select Committee on Intelligence (Minority staff)",
         venue: "Web release; IRA-linked Twitter handles released 1 November 2017",
@@ -847,13 +817,19 @@ function render() {
         <p class="authors">${it.authors}</p>
         <p class="venue">${it.venue}</p>
         <p class="why">${it.why}</p>
-        <div class="links">${links.join("")}<span class="slideref">SLIDE ${it.slide}</span></div>
+        <div class="links">${links.join("")}<span class="slideref">${year(it.venue)}</span></div>
         <pre>${esc(it.bib)}</pre>
       </article>`;
     });
     el.innerHTML = html;
     root.appendChild(el);
   });
+}
+
+function year(v) {
+  const m = v.match(/\b(19|20)\d{2}\b/) || v.match(/'(\d{2})\b/);
+  if (!m) return "";
+  return m[0].length === 4 ? m[0] : "20" + m[1];
 }
 
 function toggleBib(btn) {
