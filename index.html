@@ -297,6 +297,7 @@ const DATA = [
         venue: "Journal of Computational Social Science 5, 1511–1528, 2022",
         why: "The hands-on tutorial for the Botometer tool. Cite it when you <b>use</b> Botometer rather than when you discuss bot detection in principle.",
         doi: "10.1007/s42001-022-00177-5",
+        code: "https://github.com/osome-iu/Botometer101",
         bib: `@article{yang2022botometer101,
   title   = {Botometer 101: social bot practicum for computational social scientists},
   author  = {Yang, Kai-Cheng and Ferrara, Emilio and Menczer, Filippo},
@@ -398,6 +399,7 @@ const DATA = [
         venue: "First Monday 25(11), 2020",
         why: "The billion-tweet view of a single election. Cite for the finding that <b>automation is entangled with genuine communities</b> — bots amplify, humans carry — rather than operating as a separable layer.",
         doi: "10.5210/fm.v25i11.11431",
+        data: "https://github.com/echen102/us-pres-elections-2020",
         bib: `@article{ferrara2020characterizing,
   title   = {Characterizing social media manipulation in the 2020 {U.S.} presidential election},
   author  = {Ferrara, Emilio and Chang, Herbert and Chen, Emily and Muric, Goran and Patel, Jaimin},
@@ -414,6 +416,7 @@ const DATA = [
         venue: "JMIR Public Health and Surveillance 7(11), e30642, 2021",
         why: "The infodemic act's data backbone: the most-used public dataset of anti-vaccine content. Cite it when you need <b>ready-made infodemic data</b> rather than the bots finding.",
         doi: "10.2196/30642",
+        data: "https://github.com/gmuric/avax-tweets-dataset",
         bib: `@article{muric2021vaccine,
   title   = {{COVID}-19 Vaccine Hesitancy on Social Media: Building a Public {Twitter} Data Set of Antivaccine Content, Vaccine Misinformation, and Conspiracies},
   author  = {Muric, Goran and Wu, Yusong and Ferrara, Emilio},
@@ -431,6 +434,7 @@ const DATA = [
         venue: "WebSci '23, 65–74, 2023",
         why: "The wartime case of the cross-platform claim: propaganda moving between Facebook and Twitter during the invasion. Pair with the companion <b>Ukraine dataset</b> (Chen &amp; Ferrara, ICWSM '23, DOI 10.1609/icwsm.v17i1.22208).",
         doi: "10.1145/3578503.3583597",
+        data: "https://github.com/frapierri/uk-ru_propaganda_misinformation_tw_fb",
         bib: `@inproceedings{pierri2023propaganda,
   title     = {Propaganda and Misinformation on {Facebook} and {Twitter} during the {Russian} Invasion of {Ukraine}},
   author    = {Pierri, Francesco and Luceri, Luca and Jindal, Nikhil and Ferrara, Emilio},
@@ -462,6 +466,7 @@ const DATA = [
         venue: "First Monday 25(6), 2020",
         why: "Cite for the <b>pivot speed</b> of automated networks during a crisis, and for the split between what likely-human accounts discuss (public health, risk) and what likely-bot accounts push (political conspiracy).",
         doi: "10.5210/fm.v25i6.10633",
+        data: "https://github.com/echen102/COVID-19-TweetIDs",
         bib: `@article{ferrara2020covid,
   title   = {What types of {COVID-19} conspiracies are populated by {Twitter} bots?},
   author  = {Ferrara, Emilio},
@@ -499,6 +504,7 @@ const DATA = [
         venue: "WWW '25, 541–559, 2025",
         why: "One URL-co-sharing pass links Telegram channels, partisan X accounts, and Facebook pages into a <b>single coordinated structure no single-platform monitor can see</b>.",
         doi: "10.1145/3696410.3714698",
+        code: "https://github.com/mminici/USElection-CoIA-TheWebConf25",
         bib: `@inproceedings{cinus2025exposing,
   title     = {Exposing Cross-Platform Coordinated Inauthentic Activity in the Run-Up to the 2024 {U.S.} Election},
   author    = {Cinus, Federico and Minici, Marco and Luceri, Luca and Ferrara, Emilio},
@@ -577,6 +583,7 @@ const DATA = [
         venue: "arXiv:2605.22880, 2026 (preprint)",
         why: "Cite for the empirical answer to “will off-the-shelf models do this?” — a red-teaming study probing whether open-weight models will produce persuasive political content across the opinion spectrum.",
         arxiv: "2605.22880",
+        code: "https://github.com/SIGNALS-Lab/llm-overton-external",
         bib: `@article{ruiz2026redteaming,
   title   = {How Far Will They Go? Red-Teaming Online Influence with Large Language Models},
   author  = {Ruiz, Daniel C. and Serbina, Anna and Rao, Ashwin and Ferrara, Emilio and Luceri, Luca},
@@ -663,6 +670,7 @@ const DATA = [
         why: "Cite for the central agent-era finding: LLM agents placed in an organic community <b>coordinate and devise tactics that were never scripted</b>, with cascades deepening as awareness grows. A simulated X-like platform with operator and ordinary-user agents.",
         doi: "10.1145/3774904.3792580",
         arxiv: "2510.25003",
+        code: "https://github.com/angelayejinyi/GABMxIO",
         bib: `@inproceedings{orlando2026emergent,
   title     = {Emergent Coordinated Behaviors in Networked {LLM} Agents: Modeling the Strategic Dynamics of Information Operations},
   author    = {Orlando, Gian Marco and Ye, Jinyi and La Gatta, Valerio and Saeedi, Mahdi and Moscato, Vincenzo and Ferrara, Emilio and Luceri, Luca},
@@ -810,6 +818,8 @@ function render() {
       if (it.doi) links.push(`<a href="https://doi.org/${it.doi}" target="_blank" rel="noopener">DOI</a>`);
       if (it.arxiv) links.push(`<a href="https://arxiv.org/abs/${it.arxiv}" target="_blank" rel="noopener">arXiv</a>`);
       if (it.url) links.push(`<a href="${it.url}" target="_blank" rel="noopener">Document</a>`);
+  if (it.code) links.push(`<a href="${it.code}" target="_blank" rel="noopener">Code</a>`);
+  if (it.data) links.push(`<a href="${it.data}" target="_blank" rel="noopener">Data</a>`);
       links.push(`<button onclick="toggleBib(this)">BibTeX</button>`);
       links.push(`<button onclick="copyBib(this)">Copy</button>`);
       html += `<article class="entry" data-bib="${encodeURIComponent(it.bib)}">
