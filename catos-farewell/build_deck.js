@@ -580,7 +580,7 @@ divider(3, "The findings", "Five results I would\ndefend anywhere.", "Each one p
       showTitle: true, title: "Share of a known campaign the detector recovers",
       lineDataSymbol: "circle", lineDataSymbolSize: 10, lineSize: 3,
       showValue: true, dataLabelPosition: "t", dataLabelFormatCode: "0.000",
-      valAxisMaxVal: 0.6, valAxisLabelFormatCode: "0.0",
+      valAxisMinVal: 0, valAxisMaxVal: 0.6, valAxisLabelFormatCode: "0.0",
     })
   );
 
@@ -1065,7 +1065,7 @@ divider(6, "The lessons · what travels", "What Singapore\ntaught me.", "The dat
       x: M, y: 1.9, w: 6.4, h: 3.1, barDir: "bar",
       showTitle: true, title: "Cluster size tells you almost nothing",
       showValue: true, dataLabelPosition: "outEnd", dataLabelFormatCode: "#,##0",
-      chartColors: [GRAY, ACCENT], varyColors: true,
+      chartColors: ["C9C2B8", ACCENT], varyColors: true,
       valAxisHidden: true, valGridLine: { style: "none" }, valAxisMaxVal: 15500,
     })
   );
@@ -1108,12 +1108,12 @@ divider(6, "The lessons · what travels", "What Singapore\ntaught me.", "The dat
       x: M + 6.7, y: y + 0.02, w: 4.9, h: 0.65,
       fontFace: F, fontSize: T_CAP, color: GRAY, margin: 0, valign: "middle",
     });
-    y += 0.9;
+    y += 0.85;
   });
 
-  card(s, M, 6.05, 11.9, 0.9, PEACH);
+  card(s, M, 6.1, 11.9, 0.85, PEACH);
   s.addText("The negative-results chapter is the one I'd read first if someone handed me this report. It is Chapter 15.", {
-    x: M + 0.4, y: 6.1, w: 11.1, h: 0.8,
+    x: M + 0.4, y: 6.12, w: 11.1, h: 0.8,
     fontFace: F, fontSize: T_BODY, color: INK, margin: 0, valign: "middle",
   });
   s.addNotes("Conversational delivery. Slow on the last one.");

@@ -6,9 +6,20 @@
 
 ```
 node build_deck.js                 # regenerate
-python3 qa_geometry.py             # text overflow + overlap (LibreOffice can't render here)
+python3 qa_geometry.py             # text overflow, overlap, panel collisions
 python3 analyze_reference.py CATOS_Farewell_Ferrara_Aug2026.pptx   # style conformance
 python3 ~/.claude/skills/pptx/scripts/office/validate.py CATOS_Farewell_Ferrara_Aug2026.pptx
+soffice --headless --convert-to pdf CATOS_Farewell_Ferrara_Aug2026.pptx   # visual review
+```
+
+**Rendering prerequisites.** A bare container has only `libreoffice-core`, which has no
+import filter for any document — every conversion fails with "source file could not be
+loaded". And without Carlito, Calibri falls back to DejaVu Sans, which is ~30% wider, so
+the PDF shows wrapping that will not happen in PowerPoint. Install both before trusting
+a render:
+
+```
+apt-get update && apt-get install -y libreoffice-impress fonts-crosextra-carlito
 ```
 
 Speaker notes are on every slide. This file is the timing plan and the source trail.

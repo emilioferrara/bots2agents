@@ -71,6 +71,7 @@ def main(path):
 
     for idx, slide in enumerate(prs.slides, start=1):
         boxes = []
+        panels = []
         for sh in slide.shapes:
             x, y = in_(sh.left), in_(sh.top)
             w, h = in_(sh.width), in_(sh.height)
@@ -105,6 +106,23 @@ def main(path):
                                     f"at ({x:.2f},{y:.2f}) w={w:.2f} '{label}'")
                 if not is_decor:
                     boxes.append(((x, y, w, h), label))
+            elif not label and w > 1.5 and h > 0.4:
+                panels.append((x, y, w, h))
+
+        # panel-on-panel overlap: two cards colliding is always a defect
+        for i in range(len(panels)):
+            for j in range(i + 1, len(panels)):
+                a, b = panels[i], panels[j]
+                if rects_overlap(a, b, tol=0.05):
+                    # a panel fully containing another is a deliberate nest
+                    inside = (a[0] <= b[0] + .01 and a[1] <= b[1] + .01
+                              and a[0] + a[2] >= b[0] + b[2] - .01
+                              and a[1] + a[3] >= b[1] + b[3] - .01)
+                    outside = (b[0] <= a[0] + .01 and b[1] <= a[1] + .01
+                               and b[0] + b[2] >= a[0] + a[2] - .01
+                               and b[1] + b[3] >= a[1] + a[3] - .01)
+                    if not (inside or outside):
+                        problems.append(f"s{idx}: PANEL-OVERLAP {a} x {b}")
 
         # text-on-text overlap (cards are drawn first and are not text frames)
         for i in range(len(boxes)):
