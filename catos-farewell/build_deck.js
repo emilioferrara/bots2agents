@@ -31,7 +31,7 @@ const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
 pres.author = "Emilio Ferrara";
 pres.company = "A*STAR — Institute of High Performance Computing";
-pres.title = "CATOS: What the Data Said, and What It Taught Us";
+pres.title = "What the Data Says, and What Singapore Taught Me";
 
 // ---------------------------------------------------------------- helpers
 
@@ -163,10 +163,10 @@ function divider(part, heading, blurb) {
     fontFace: B_FONT, fontSize: 11, bold: true, charSpacing: 2,
     color: FAINT, margin: 0,
   });
-  s.addText("What the Data Said,\nand What It Taught Us", {
-    x: M, y: 1.9, w: 10.5, h: 2.2,
-    fontFace: H_FONT, fontSize: 50, bold: true, color: WHITE,
-    lineSpacing: 56, margin: 0,
+  s.addText("What the Data Says,\nand What Singapore Taught Me", {
+    x: M, y: 1.9, w: 11.6, h: 2.2,
+    fontFace: H_FONT, fontSize: 46, bold: true, color: WHITE,
+    lineSpacing: 54, margin: 0,
   });
   s.addText(
     "Closing remarks on a year with CATOS: 154 million posts, six and a half years, " +
