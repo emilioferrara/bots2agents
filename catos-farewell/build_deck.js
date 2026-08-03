@@ -51,7 +51,7 @@ pres.company = "A*STAR — Institute of High Performance Computing";
 pres.title = "What the Data Says, and What Singapore Taught Me";
 
 let n = 0;
-const TOTAL = 39; // asserted against the real count at the end of this file
+const TOTAL = 40; // asserted against the real count at the end of this file
 
 // ------------------------------------------------------------------ helpers
 
@@ -472,61 +472,134 @@ divider(1, "The brief · 2025–2026", "I was asked what is\nactually out there.
   );
 }
 
-// ====================================================== 8 GERARD / EPISTEMIC
+// ====================================================== 8 GERARD / BENCHMARK
 {
   const s = slide();
   chip(s, "Collaborations");
-  title(s, "With Gerard Yeo — one turn to change its mind",
-        "Epistemic trust in multi-turn conversation · six models, three kinds of pressure");
+  title(s, "With Gerard Yeo — correct until challenged",
+        "Yeo & Ferrara · a benchmark for conversational epistemic robustness");
 
-  // the conversation structure is the experiment, so draw it
+  lines(s, [
+    "A model answers a factual claim correctly. Then the user pushes back for four turns — ~without ever supplying new evidence~. Does the judgment hold?",
+  ], M, 1.72, 11.9, 0.75, { size: T_SUB, gap: 0 });
+
   const turns = [
-    ["Turn 1", "A claim is put\nto the model", CREAM],
-    ["Turn 2", "A manipulation cue\nis introduced", PEACH],
-    ["Turn 3+", "The cue is\nreinforced", CREAM],
-    ["Turn 5", "Where the drift\nhas landed", CREAM],
+    ["T1", "The claim\nis put", CREAM],
+    ["T2", "A cue is\nintroduced", PEACH],
+    ["T3", "The cue is\nreinforced", CREAM],
+    ["T4", "“Are you\nsure?”", CREAM],
+    ["T5", "Final recon-\nsideration", CREAM],
   ];
-  const tw = 2.72, tgap = 0.42;
+  const tw = 2.16, tgap = 0.28;
   turns.forEach((t, i) => {
     const x = M + i * (tw + tgap);
-    card(s, x, 1.8, tw, 1.55, t[2]);
+    card(s, x, 2.5, tw, 1.3, t[2]);
     s.addText(t[0], {
-      x: x + 0.28, y: 1.95, w: tw - 0.56, h: 0.4,
+      x: x + 0.24, y: 2.62, w: tw - 0.48, h: 0.35,
       fontFace: F, fontSize: T_SUB, bold: true, color: i === 1 ? ACCENT : INK, margin: 0,
     });
     s.addText(t[1], {
-      x: x + 0.28, y: 2.38, w: tw - 0.56, h: 0.8,
+      x: x + 0.24, y: 2.98, w: tw - 0.48, h: 0.72,
       fontFace: F, fontSize: T_CAP, color: GRAY, margin: 0, valign: "top",
     });
-    if (i < 3) {
+    if (i < 4) {
       s.addText("→", {
-        x: x + tw + 0.02, y: 2.3, w: 0.38, h: 0.5,
-        fontFace: F, fontSize: T_HEAD, color: ACCENT, align: "center", margin: 0,
+        x: x + tw + 0.01, y: 2.95, w: 0.26, h: 0.4,
+        fontFace: F, fontSize: T_SUB, color: ACCENT, align: "center", margin: 0,
       });
     }
   });
 
-  statRow(s, 3.6, [
-    ["6", "models probed\nGPT-5 · Qwen · DeepSeek · Mistral"],
-    ["80%+", "baseline accuracy\nbefore any pressure is applied"],
-    ["20–25%", "talked out of a correct answer\nmost of it landing at turn 2"],
-  ], { h: 1.25 });
+  s.addChart(
+    pres.ChartType.bar,
+    [
+      { name: "FEVER · encyclopaedic", labels: ["Emotional\nframing", "Provenance\nconflict", "Identity /\nauthority"], values: [5.7, 41.0, 53.0] },
+      { name: "SciFact · scientific", labels: ["Emotional\nframing", "Provenance\nconflict", "Identity /\nauthority"], values: [9.7, 54.0, 61.7] },
+    ],
+    chartOpts({
+      x: M, y: 4.05, w: 7.3, h: 2.5, barDir: "col", barGrouping: "clustered",
+      showTitle: true, title: "Worst-case accuracy lost to the cue, in points (vs a neutral conversation)",
+      showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 12,
+      chartColors: ["E4A08B", ACCENT],
+      showLegend: true, legendPos: "b", legendFontFace: F, legendFontSize: 12, legendColor: GRAY,
+      valAxisHidden: true, valGridLine: { style: "none" }, valAxisMaxVal: 75,
+      catAxisLabelFontSize: 12,
+    })
+  );
 
-  s.addText("AND NOT ALL PRESSURE IS EQUAL", {
-    x: M, y: 5.05, w: 11.9, h: 0.3,
+  statRow(s, 4.15, [
+    ["9,600", "five-turn conversations\n48,000 evaluated turns"],
+    ["6", "models · Qwen3.5-9B, Qwen3-235B,\nGPT-5.5, GLM-5, DeepSeek V3.2, Mistral Large 3"],
+  ], { x: 8.15, w: 4.5, h: 1.5 });
+
+  lines(s, [
+    "Not simply agreeable — ~selectively vulnerable~ to pressure dressed as evidence.",
+  ], 8.15, 5.85, 4.5, 1.0, { size: T_SUB, gap: 0 });
+
+  cite(s, "Yeo & Ferrara, Correct Until Challenged. Claims from FEVER and SciFact; C2PA-style provenance cues.");
+  s.addNotes(
+    "Gerard's experiment, Gerard's benchmark; I am second author. The design point worth " +
+    "saying out loud: the user never supplies evidence, only the appearance of it. " +
+    "So this measures deference to authority, not updating on new information."
+  );
+}
+
+// ================================================== 9 GERARD / HOW IT FAILS
+{
+  const s = slide();
+  chip(s, "Collaborations");
+  title(s, "…and scientific claims break first",
+        "Where the accuracy goes, and the two shapes the failure takes");
+
+  s.addChart(
+    pres.ChartType.bar,
+    [
+      { name: "Turn 1", labels: ["Qwen3.5-9B", "GPT-5.5", "GLM-5", "Qwen3-235B", "DeepSeek V3.2", "Mistral Large 3"], values: [80.0, 81.1, 80.6, 71.6, 59.9, 64.9] },
+      { name: "Turn 5", labels: ["Qwen3.5-9B", "GPT-5.5", "GLM-5", "Qwen3-235B", "DeepSeek V3.2", "Mistral Large 3"], values: [72.8, 63.0, 61.9, 50.6, 34.0, 37.4] },
+    ],
+    chartOpts({
+      x: M, y: 1.8, w: 7.3, h: 3.15, barDir: "col", barGrouping: "clustered",
+      showTitle: true, title: "SciFact accuracy, first turn against last (%)",
+      showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 10,
+      chartColors: ["C9C2B8", ACCENT],
+      showLegend: true, legendPos: "b", legendFontFace: F, legendFontSize: 12, legendColor: GRAY,
+      valAxisHidden: true, valGridLine: { style: "none" }, valAxisMaxVal: 100,
+      catAxisLabelFontSize: 10,
+    })
+  );
+
+  lines(s, [
+    "*Every* model ends lower than it started. Five lose more than 18 points.",
+    "High first-turn accuracy buys nothing: GPT-5.5 opens strongest and still sheds 18 points.",
+    "And the interaction ~damages far more than it repairs~ — up to 32.6% of correct answers go wrong, while under 6.3% of wrong ones come right.",
+  ], 8.15, 1.95, 4.5, 2.9, { size: T_SUB, gap: 11 });
+
+  card(s, M, 5.05, 5.75, 1.85, BLUEGRAY);
+  s.addText("CONFIDENCE EROSION", {
+    x: M + 0.35, y: 5.2, w: 5.05, h: 0.28,
+    fontFace: F, fontSize: 12, bold: true, color: NAVY, margin: 0, charSpacing: 1,
+  });
+  s.addText("DeepSeek and Mistral retreat to uncertainty first — up to +46.3 points of correct→uncertain.", {
+    x: M + 0.35, y: 5.55, w: 5.05, h: 1.3,
+    fontFace: F, fontSize: T_SUB, color: INK, margin: 0, valign: "top",
+  });
+
+  card(s, M + 6.15, 5.05, 5.75, 1.85, PEACH);
+  s.addText("SPECULATIVE RECONCILIATION", {
+    x: M + 6.5, y: 5.2, w: 5.05, h: 0.28,
     fontFace: F, fontSize: 12, bold: true, color: ACCENT, margin: 0, charSpacing: 1,
   });
-  lines(s, [
-    "~Identity and authority~ move models most. *Provenance* cues come second. *Emotional framing* barely registers.",
-    "Two failure shapes: some models erode — correct, then uncertain, then wrong. Others simply *flip*. Which shape you get depends on the model family.",
-  ], M, 5.4, 11.9, 1.3, { size: T_SUB, gap: 6 });
+  s.addText("Told only that “a source says otherwise”, GPT-5.5 dropped a correct Booker Prize answer and invented an award-timing rule to justify it.", {
+    x: M + 6.5, y: 5.55, w: 5.05, h: 1.3,
+    fontFace: F, fontSize: T_SUB, color: INK, margin: 0, valign: "top",
+  });
 
-  cite(s, "Gerard Yeo (A*STAR), EpistemicTrust; ARR August submission. Kimi K3 arm pending.");
+  cite(s, "Yeo & Ferrara, Correct Until Challenged, Tables 2 and 4. Under submission, ARR August.");
   s.addNotes(
-    "Gerard's experiment and Gerard's results — my role was framing and venue. " +
-    "The line that lands with a policy audience: a model that is right 80% of the time alone " +
-    "can be argued out of a quarter of those answers by someone claiming to be an authority, " +
-    "and it takes one turn. Paper going to ARR; collaboration continues, and I owe Raj that conversation."
+    "The two cards are the transferable part. Erosion versus reversal is a model-family " +
+    "property, so a guardrail that blocks direct agreement can still leave you with " +
+    "authority-induced uncertainty. And the Rushdie example lands with any audience: the " +
+    "model did not just cave, it manufactured a reason to cave."
   );
 }
 

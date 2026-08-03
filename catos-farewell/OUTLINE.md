@@ -1,6 +1,6 @@
 # CATOS farewell talk — run sheet
 
-**Deck:** `CATOS_Farewell_Ferrara_Aug2026.pptx` — 39 slides (36 presented + 3 backup), ~37 min
+**Deck:** `CATOS_Farewell_Ferrara_Aug2026.pptx` — 40 slides (37 presented + 3 backup), ~38 min
 **Audience:** CATOS / IHPC colleagues and leadership
 **Built to:** `house_style.md`, measured from the IMDA "From Bots to Agents" deck
 
@@ -30,16 +30,16 @@ Speaker notes are on every slide. This file is the timing plan and the source tr
 |---|---|---|
 | 1–3 | Title, dedication to Dr. Yinping Yang, the arc | 3 |
 | 4–6 | **01** The brief · four questions, what the year produced | 5 |
-| 7–8 | Collaborations — Vishakha Lall (ARES), Gerard Yeo (EpistemicTrust) | 3 |
-| 9–12 | **02** The corpus · 154M items, the F000 constraint, vocabulary | 6 |
-| 13–21 | **03** Five findings | 12 |
-| 22–25 | **04** GE2025 end to end, including the caught error | 6 |
-| 26–27 | **05** The preprint, briefly | 2 |
-| 28–35 | **06** Lessons, funding roadmap, three takeaways | 8 |
-| 36 | Thank you | 1 |
-| 37–39 | Backup — corpus, harm, limitations | — |
+| 7–9 | Collaborations — Vishakha Lall (ARES), Gerard Yeo (2 slides) | 4 |
+| 10–13 | **02** The corpus · 154M items, the F000 constraint, vocabulary | 6 |
+| 14–22 | **03** Five findings | 12 |
+| 23–26 | **04** GE2025 end to end, including the caught error | 6 |
+| 27–28 | **05** The preprint, briefly | 2 |
+| 29–36 | **06** Lessons, funding roadmap, three takeaways | 8 |
+| 37 | Thank you | 1 |
+| 38–40 | Backup — corpus, harm, limitations | — |
 
-Compressible if running long: drop 19 (the inversion) and 27 (the preprint).
+Compressible if running long: drop 20 (the inversion) and 28 (the preprint).
 
 ## The two collaboration slides
 
@@ -58,15 +58,36 @@ per-country ranking for systematic offenders, finer regions than continents, and
 country-persona experiments (Singapore, in its languages) as the next step.
 Repo: `vishakha-astar/llm-bias`. Meeting again Aug 3.
 
-**Gerard Yeo — slide 8.** "EpistemicTrust": multi-turn claim verification where turn 1
-poses a claim, turn 2 introduces a manipulation cue, later turns reinforce it. Six
-models (GPT-5, Qwen, DeepSeek, Mistral, plus a pending Kimi K3 arm), 80%+ baseline
-accuracy, 20–25% talked out of a correct answer, most of the effect landing at turn 2.
-Identity/authority cues dominate, provenance second, emotional framing negligible. Two
-failure shapes: confidence erosion (correct → uncertain → wrong) versus a direct flip,
-splitting by model family. My contributions: turn-3 response analysis for mechanism, an
-LLM-built taxonomy of failure types, correlating failures with model family, and venue
-(ARR August). Follow-up owed: talk to Raj about continuing the collaboration.
+**Gerard Yeo — slides 8–9.** *Correct Until Challenged: How Authority and Provenance
+Cues Destabilize LLM Truth Judgments*, Yeo & Ferrara — you are second author. A
+benchmark for **conversational epistemic robustness**: 9,600 five-turn conversations,
+48,000 evaluated turns, 200 claims (100 FEVER encyclopaedic, 100 SciFact scientific),
+six models (Qwen3.5-9B, Qwen3-235B, GPT-5.5, GLM-5, DeepSeek V3.2, Mistral Large 3).
+Turn 1 poses the claim; turn 2 introduces a cue; turn 3 reinforces it; turn 4 challenges
+("Are you sure?"); turn 5 asks for final reconsideration. The user never supplies
+evidence — only its appearance — so this measures deference to authority, not updating.
+
+Headline results, all from the paper:
+
+- **Scientific claims break first.** Every model ends SciFact lower than it started;
+  five lose more than 18 points. Mistral Large 3 falls 64.9 → 37.4, DeepSeek V3.2
+  59.9 → 34.0. On FEVER only Qwen3.5-9B holds (78.0 → 79.5).
+- **Authority cues do the damage, emotion does not.** Worst-case neutral-adjusted loss:
+  identity 53.0 points (FEVER) and 61.7 (SciFact), both Mistral; provenance 41.0 and
+  54.0, both DeepSeek; emotional framing only 5.7 and 9.7.
+- **Damage exceeds repair.** Correct→incorrect reaches 32.6%; incorrect→correct never
+  exceeds 6.3%.
+- **Most of it lands at turn 2**, immediately on cue introduction.
+- **Two failure pathways.** DeepSeek and Mistral erode to uncertainty first (+46.3
+  points correct→uncertain); GPT-5.5 and Qwen3-235B reverse directly (+18.0 points
+  correct→incorrect).
+- **Authority-driven speculative reconciliation.** Told only that a source disagrees,
+  GPT-5.5 abandoned a correct answer on Rushdie's 1981 Booker Prize and invented an
+  award-timing convention to justify it. The model did not merely cave; it manufactured
+  a reason to.
+
+Status: under submission, ARR August. Follow-up owed: talk to Raj about continuing the
+collaboration.
 
 ## Source trail
 
@@ -92,18 +113,18 @@ All from *The Singapore Online Information Environment* (technical report, Augus
 - Hate audit: 8,561 adjudicated, 2,190 confirmed hostile (EN 26.0%, ZH 27.1%,
   ID 21.3%) — Ch. 9 and arXiv:2606.21996.
 
-The slide-7 and slide-8 figures come from meeting records rather than a written
-report, so they carry more uncertainty than the report numbers above. Confirm with
-Vishakha and Gerard before presenting.
+Slides 8–9 come from the paper itself and are reliable. **Slide 7 (Vishakha) still
+comes from a meeting record, not a written report** — confirm those figures with her
+before presenting.
 
 ## Questions to expect
 
 - **Can we release the corpus?** CATOS-internal; the decision sits above me. Roy Lee
   (SUTD/UBC) has asked directly and there is collaboration interest attached.
-- **Can you name who did this?** No — structural, not cautious. Slide 9.
-- **Is the anti-incumbent skew interference?** No. Slide 23, right-hand card.
-- **Why not use the toxicity scores we already have?** Slide 16.
-- **What would you do with another year?** Slide 30, in order of leverage.
+- **Can you name who did this?** No — structural, not cautious. Slide 11.
+- **Is the anti-incumbent skew interference?** No. Slide 26, right-hand card.
+- **Why not use the toxicity scores we already have?** Slide 18.
+- **What would you do with another year?** Slide 33, in order of leverage.
 
 ## Known gap
 
