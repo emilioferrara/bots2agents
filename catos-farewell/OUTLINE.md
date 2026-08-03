@@ -43,20 +43,53 @@ Compressible if running long: drop 20 (the inversion) and 28 (the preprint).
 
 ## The two collaboration slides
 
-Both are the colleague's work; say so out loud. Sourced from meeting records, not from
-a written report — check the numbers with each of them before presenting.
+Both are the colleague's work; say so out loud.
 
-**Vishakha Lall (ARES) — slide 7.** Models score countries on governance indicators
-(transparency, corruption, rule of law) against the US News soft-power index, top 90
-countries. Conditions: no context, as a US citizen, as a China citizen, asked in
-Chinese. Claude pulls scores down, OpenAI pulls them up, DeepSeek overestimates and
-warms to Asian countries under a China persona. Latin America penalty under both
-citizen framings; Mexico correct in one model, not others. Error measured as
-cross-entropy with ordinal and directional components (~10% overall). My contributions:
-plotting context minus no-context to separate induced shift from standing bias, a
-per-country ranking for systematic offenders, finer regions than continents, and
-country-persona experiments (Singapore, in its languages) as the next step.
-Repo: `vishakha-astar/llm-bias`. Meeting again Aug 3.
+**Vishakha Lall (ARES) — slide 7.** Rebuilt 3 Aug 2026 from her repo
+(`vishakha-astar/llm-bias`) and her 30 July consolidated report, replacing the earlier
+meeting-note version. Seven models — Claude Sonnet 4.6, GPT-5.5, DeepSeek R1, Gemma 3,
+Llama 3.3, Mistral Large 3, Qwen3 — score countries on Freedom House (Freedom in the
+World, Freedom on the Net), GSOD (representation, rights, rule of law, participation),
+and HRW items. 89 countries survive the US News ranking filter; the freedom-status
+classification runs on 51. Four core conditions: no context, US citizen, China citizen,
+asked in Chinese. Thirty-three country personas have now been run in total, including
+Singapore in Malay, Chinese and Tamil — the language work is done, not pending.
+
+Headline numbers, all from her report:
+
+- **Over-crediting is the failure mode.** Of 1,428 model-context-country predictions:
+  62.2% exact, 33.3% rated a class *freer* than ground truth, 4.5% less free. Every
+  error is a one-class error; no model ever jumps two classes.
+- **Llama 3.3 is the extreme over-rater** (mean error +0.603, 60.3% over, **0.0% under** —
+  it never once rates a country less free than truth), then Qwen3 (+0.529) and Gemma 3
+  (+0.382). **Claude Sonnet 4.6 is the only model with negative mean error** (−0.064) and
+  the most accurate (81.9% exact, MAE 0.181).
+- **Thailand and Turkey are rated freer than truth in all 28 model-by-condition runs** —
+  the clearest systematic prior in the set.
+- **The citizen personas do not flatter their own country.** The US-citizen framing is a
+  broad downward shift; it makes the United States itself *more* negative (−0.068 →
+  −0.103). This kills the naive "persona favours own country" hypothesis.
+- **Chinese-language prompting is the highest-error condition** (56.6% exact vs 65.0% for
+  no-context) and raises China's bias most (+0.077 → +0.117).
+- **Geography is structured, not noisy.** Asia is over-predicted in every context;
+  Africa and South America under-predicted in every context; Oceania near-neutral.
+  South-eastern Asia is the most over-predicted region, Southern Africa the most under.
+- **Singapore is over-predicted by all seven models**, though absolute error stays low.
+- Region means hide opposite country effects — Canada up against the United States down,
+  Mexico up against Costa Rica and Honduras down, China up against Japan down. This
+  vindicates the finer-than-continent regions Emilio asked for.
+
+Emilio's contributions, unchanged: plotting context minus no-context to separate induced
+shift from standing bias, a per-country ranking so systematic offenders surface, finer
+regions than continents, and the country-persona experiments in Singapore's languages.
+
+*Not on the slide:* their normalized cross-entropy metric (`fiw_data_analysis_v2.ipynb`,
+soft-label cross-entropy min-max scaled between 0.61 and 2.70) reproduces at **12.3%**
+mean across the 28 model×condition cells on the 89-country set, range 7.3% (GPT-5.5,
+US-citizen) to 16.7% (Llama 3.3, Chinese) — the earlier "~10%" was low. Left off the
+slide because it is computed on a different country subset than the 62.2/33.3/4.5 split.
+
+Meeting again Aug 3.
 
 **Gerard Yeo — slides 8–9.** *Correct Until Challenged: How Authority and Provenance
 Cues Destabilize LLM Truth Judgments*, Yeo & Ferrara — you are second author. A
@@ -113,9 +146,10 @@ All from *The Singapore Online Information Environment* (technical report, Augus
 - Hate audit: 8,561 adjudicated, 2,190 confirmed hostile (EN 26.0%, ZH 27.1%,
   ID 21.3%) — Ch. 9 and arXiv:2606.21996.
 
-Slides 8–9 come from the paper itself and are reliable. **Slide 7 (Vishakha) still
-comes from a meeting record, not a written report** — confirm those figures with her
-before presenting.
+Slides 8–9 come from the paper itself and are reliable. **Slide 7 (Vishakha) was rebuilt
+3 Aug 2026 against her repo and her 30 July consolidated report** and no longer rests on
+a meeting note. Still worth a courtesy check with her that the report is current, but the
+figures now trace to written sources.
 
 ## Questions to expect
 

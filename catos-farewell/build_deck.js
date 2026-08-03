@@ -416,19 +416,19 @@ divider(1, "The brief · 2025–2026", "I was asked what is\nactually out there.
         "ARES · geopolitical bias in how models classify governance and freedom");
 
   lines(s, [
-    "Ask several models to score countries on governance — transparency, corruption, rule of law — then change *who is asking*, and in *what language*.",
+    "Ask seven models to score countries on freedom and governance — civil liberties, political rights, rule of law — then change *who is asking*, and in *what language*.",
   ], M, 1.75, 11.9, 0.75, { size: T_SUB, gap: 0 });
 
   // each model carries a direction, and the direction is the finding
   const models = [
-    ["Claude", "↓", "pulls scores down\nconsistently underestimates"],
-    ["OpenAI", "↑", "pulls scores up\nconsistently overestimates"],
-    ["DeepSeek", "↑", "overestimates, and warms to\nAsian countries as a China persona"],
+    ["Llama 3.3", "↑", "rates 60.3% of countries freer\nthan truth — and not once lower"],
+    ["Qwen 3", "↑", "+0.53 classes too free;\nthe widest swings in Western Asia"],
+    ["Claude 4.6", "↓", "the only model that under-rates;\n81.9% exact, the lowest error"],
   ];
   const cw = 3.83, gap = 0.2;
   models.forEach((m, i) => {
     const x = M + i * (cw + gap);
-    card(s, x, 2.6, cw, 1.75, i === 0 ? BLUEGRAY : PEACH);
+    card(s, x, 2.6, cw, 1.75, i === 2 ? BLUEGRAY : PEACH);
     s.addText(m[0], {
       x: x + 0.3, y: 2.78, w: cw - 1.35, h: 0.45,
       fontFace: F, fontSize: T_HEAD, bold: true, color: INK, margin: 0, valign: "middle",
@@ -445,30 +445,36 @@ divider(1, "The brief · 2025–2026", "I was asked what is\nactually out there.
   });
 
   s.addText("THE SAME COUNTRY, SCORED UNDER FOUR CONDITIONS", {
-    x: M, y: 4.55, w: 11.9, h: 0.3,
+    x: M, y: 4.5, w: 11.9, h: 0.3,
     fontFace: F, fontSize: 12, bold: true, color: ACCENT, margin: 0, charSpacing: 1,
   });
   const conds = ["No context", "As a US citizen", "As a China citizen", "Asked in Chinese"];
   conds.forEach((c, i) => {
     const x = M + i * (2.9 + 0.13);
-    card(s, x, 4.9, 2.9, 0.6, CREAM);
+    card(s, x, 4.82, 2.9, 0.6, CREAM);
     s.addText(c, {
-      x, y: 4.9, w: 2.9, h: 0.6,
+      x, y: 4.82, w: 2.9, h: 0.6,
       fontFace: F, fontSize: T_SUB, color: INK, align: "center", margin: 0, valign: "middle",
     });
   });
 
   lines(s, [
-    "The direction of the error is *stable per model* and moves with the persona — a Latin America penalty under both citizen framings, and Mexico scored correctly by one model and not others.",
-    "What I added: plot ~context minus no-context~ to separate an induced shift from a standing bias; a per-country ranking so systematic offenders surface; finer regions than continents.",
-  ], M, 5.7, 11.9, 1.3, { size: T_SUB, gap: 6 });
+    "Over-crediting is the failure mode: *62.2% exact, 33.3% too free, 4.5% too unfree*.",
+    "Thailand and Turkey read freer than truth in ~all 28 runs~; nothing is ever off by two classes.",
+    "The US persona does not favour the US: it pushes scores *down*, that country hardest of all.",
+    "What I added: ~context minus no-context~, a per-country ranking, finer regions than continents.",
+  ], M, 5.57, 11.9, 1.45, { size: T_CAP, gap: 3 });
 
-  cite(s, "Ground truth: US News soft-power index, top 90 countries. Repo: vishakha-astar/llm-bias.");
+  cite(s, "Ground truth: Freedom House, GSOD, HRW. 89 countries; 51 in the classification set. Repo: vishakha-astar/llm-bias.");
   s.addNotes(
     "Credit Vishakha properly — this is her analysis and her repo; I was a sounding board. " +
+    "Numbers on this slide are confirmed against her repo and her 30 July consolidated report, not a meeting note. " +
     "The finding that travels: bias here is not noise, it has a stable direction per model, " +
-    "and the direction moves when you change who the model thinks is asking. " +
-    "Meeting again Aug 3; the persona work in Singapore's languages is the natural next step."
+    "and the direction moves when you change who the model thinks is asking — but not in the naive way. " +
+    "The US-citizen persona is a downward shift, not a self-flattering one, which kills the obvious hypothesis. " +
+    "If asked about Singapore: all seven models over-rate it, though the absolute error stays low. " +
+    "Thirty-three personas have now been run, including Singapore in Malay, Chinese and Tamil, so the language " +
+    "work I suggested is done rather than pending. Meeting again Aug 3."
   );
 }
 
