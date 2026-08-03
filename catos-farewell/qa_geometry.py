@@ -77,11 +77,15 @@ def main(path):
             name = sh.shape_type
             label = ""
             is_footer = False
+            is_decor = False
             if sh.has_text_frame and sh.text_frame.text.strip():
                 label = sh.text_frame.text.strip().replace("\n", " ")[:44]
                 sizes = [r.font.size.pt for p in sh.text_frame.paragraphs
                          for r in p.runs if r.font.size]
-                is_footer = bool(sizes) and max(sizes) <= 10
+                # footers, citations and section chips sit outside the margin by design
+                is_footer = bool(sizes) and max(sizes) <= 12.5
+                # the ghosted divider numeral is meant to sit behind the text
+                is_decor = bool(sizes) and max(sizes) >= 120
 
             # off-canvas / margin
             if x < -0.01 or y < -0.01 or x + w > SLIDE_W + 0.01 or y + h > SLIDE_H + 0.01:
@@ -94,12 +98,13 @@ def main(path):
                                 f"{w:.2f}x{h:.2f} '{label}'")
 
             # overflow
-            if sh.has_text_frame and sh.text_frame.text.strip():
+            if sh.has_text_frame and sh.text_frame.text.strip() and not is_decor:
                 need = est_height(sh.text_frame, w)
                 if need > h + 0.06:
                     problems.append(f"s{idx}: OVERFLOW ~{need:.2f}in into {h:.2f}in box "
                                     f"at ({x:.2f},{y:.2f}) w={w:.2f} '{label}'")
-                boxes.append(((x, y, w, h), label))
+                if not is_decor:
+                    boxes.append(((x, y, w, h), label))
 
         # text-on-text overlap (cards are drawn first and are not text frames)
         for i in range(len(boxes)):

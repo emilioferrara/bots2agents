@@ -74,6 +74,7 @@ def main(path):
     kind_totals = collections.Counter()
     bullet_slides = 0
     visual_slides = 0
+    diagram_slides = [0]
     notes_words = []
     per_slide = []
 
@@ -88,9 +89,8 @@ def main(path):
                 txt = shp.text_frame.text
                 words += len(re.findall(r"\S+", txt))
                 for p in shp.text_frame.paragraphs:
-                    if p.level and p.level > 0:
-                        has_bullets = True
-                    # a buChar/buAutoNum in the paragraph properties = a real bullet
+                    # only a buChar/buAutoNum is a real rendered bullet; an
+                    # indent level on its own is just indentation
                     pPr = p._pPr
                     if pPr is not None and (pPr.find(
                             "{http://schemas.openxmlformats.org/drawingml/2006/main}buChar") is not None
@@ -114,6 +114,9 @@ def main(path):
             bullet_slides += 1
         if kinds["chart"] or kinds["picture"] or kinds["table"]:
             visual_slides += 1
+        elif kinds["shape"] >= 4:
+            # a diagram composed from shapes still reads as a figure
+            diagram_slides[0] += 1
         if slide.has_notes_slide:
             notes_words.append(len(re.findall(
                 r"\S+", slide.notes_slide.notes_text_frame.text)))
@@ -129,7 +132,9 @@ def main(path):
           f"({100 * sum(1 for w in words_per if w > 80) / n:.0f}%)")
     print(f"slides <25 words  {sum(1 for w in words_per if w < 25)} "
           f"({100 * sum(1 for w in words_per if w < 25) / n:.0f}%)")
-    print(f"with a visual     {visual_slides} ({100 * visual_slides / n:.0f}%)")
+    print(f"chart/picture     {visual_slides} ({100 * visual_slides / n:.0f}%)")
+    print(f"+ shape diagram   {diagram_slides[0]} ({100 * diagram_slides[0] / n:.0f}%)")
+    print(f"= any figure      {visual_slides + diagram_slides[0]} ({100 * (visual_slides + diagram_slides[0]) / n:.0f}%)")
     print(f"with real bullets {bullet_slides} ({100 * bullet_slides / n:.0f}%)")
     if notes_words:
         print(f"speaker notes     {len(notes_words)}/{n} slides, "
