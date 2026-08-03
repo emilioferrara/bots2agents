@@ -1,6 +1,6 @@
 # CATOS farewell talk — run sheet
 
-**Deck:** `CATOS_Farewell_Ferrara_Aug2026.pptx` — 37 slides (34 presented + 3 backup), ~35 min
+**Deck:** `CATOS_Farewell_Ferrara_Aug2026.pptx` — 39 slides (36 presented + 3 backup), ~37 min
 **Audience:** CATOS / IHPC colleagues and leadership
 **Built to:** `house_style.md`, measured from the IMDA "From Bots to Agents" deck
 
@@ -30,15 +30,43 @@ Speaker notes are on every slide. This file is the timing plan and the source tr
 |---|---|---|
 | 1–3 | Title, dedication to Dr. Yinping Yang, the arc | 3 |
 | 4–6 | **01** The brief · four questions, what the year produced | 5 |
-| 7–10 | **02** The corpus · 154M items, the F000 constraint, vocabulary | 6 |
-| 11–19 | **03** Five findings | 12 |
-| 20–23 | **04** GE2025 end to end, including the caught error | 6 |
-| 24–25 | **05** The preprint, briefly | 2 |
-| 26–33 | **06** Lessons, funding roadmap, three takeaways | 8 |
-| 34 | Thank you | 1 |
-| 35–37 | Backup — corpus, harm, limitations | — |
+| 7–8 | Collaborations — Vishakha Lall (ARES), Gerard Yeo (EpistemicTrust) | 3 |
+| 9–12 | **02** The corpus · 154M items, the F000 constraint, vocabulary | 6 |
+| 13–21 | **03** Five findings | 12 |
+| 22–25 | **04** GE2025 end to end, including the caught error | 6 |
+| 26–27 | **05** The preprint, briefly | 2 |
+| 28–35 | **06** Lessons, funding roadmap, three takeaways | 8 |
+| 36 | Thank you | 1 |
+| 37–39 | Backup — corpus, harm, limitations | — |
 
-Compressible if running long: drop 17 (the inversion) and 25 (the preprint).
+Compressible if running long: drop 19 (the inversion) and 27 (the preprint).
+
+## The two collaboration slides
+
+Both are the colleague's work; say so out loud. Sourced from meeting records, not from
+a written report — check the numbers with each of them before presenting.
+
+**Vishakha Lall (ARES) — slide 7.** Models score countries on governance indicators
+(transparency, corruption, rule of law) against the US News soft-power index, top 90
+countries. Conditions: no context, as a US citizen, as a China citizen, asked in
+Chinese. Claude pulls scores down, OpenAI pulls them up, DeepSeek overestimates and
+warms to Asian countries under a China persona. Latin America penalty under both
+citizen framings; Mexico correct in one model, not others. Error measured as
+cross-entropy with ordinal and directional components (~10% overall). My contributions:
+plotting context minus no-context to separate induced shift from standing bias, a
+per-country ranking for systematic offenders, finer regions than continents, and
+country-persona experiments (Singapore, in its languages) as the next step.
+Repo: `vishakha-astar/llm-bias`. Meeting again Aug 3.
+
+**Gerard Yeo — slide 8.** "EpistemicTrust": multi-turn claim verification where turn 1
+poses a claim, turn 2 introduces a manipulation cue, later turns reinforce it. Six
+models (GPT-5, Qwen, DeepSeek, Mistral, plus a pending Kimi K3 arm), 80%+ baseline
+accuracy, 20–25% talked out of a correct answer, most of the effect landing at turn 2.
+Identity/authority cues dominate, provenance second, emotional framing negligible. Two
+failure shapes: confidence erosion (correct → uncertain → wrong) versus a direct flip,
+splitting by model family. My contributions: turn-3 response analysis for mechanism, an
+LLM-built taxonomy of failure types, correlating failures with model family, and venue
+(ARR August). Follow-up owed: talk to Raj about continuing the collaboration.
 
 ## Source trail
 
@@ -63,6 +91,10 @@ All from *The Singapore Online Information Environment* (technical report, Augus
   v1 validation: 16 of 42 (38%) mislabelled at 0.98 mean confidence — Ch. 14.
 - Hate audit: 8,561 adjudicated, 2,190 confirmed hostile (EN 26.0%, ZH 27.1%,
   ID 21.3%) — Ch. 9 and arXiv:2606.21996.
+
+The slide-7 and slide-8 figures come from meeting records rather than a written
+report, so they carry more uncertainty than the report numbers above. Confirm with
+Vishakha and Gerard before presenting.
 
 ## Questions to expect
 

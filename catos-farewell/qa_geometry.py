@@ -16,9 +16,10 @@ SLIDE_H = 7.5
 MARGIN = 0.45          # anything closer to an edge than this is flagged
 EMU = 914400.0
 
-# Average advance width as a fraction of point size, measured for the two
-# fonts this deck uses.  Bold runs a little wider.
-AVG_W = {("Calibri", False): 0.465, ("Calibri", True): 0.487,
+# Average advance width as a fraction of point size.  Measured from the
+# reference deck's rendered text (Calibri regular 0.4035, bold 0.4407) and
+# carried at +5% so a string of unusually wide glyphs still gets caught.
+AVG_W = {("Calibri", False): 0.424, ("Calibri", True): 0.463,
          ("Cambria", False): 0.500, ("Cambria", True): 0.523}
 LINE_H = 1.22          # line box as a multiple of point size
 BOX_PAD = 0.10         # pptxgenjs default internal padding, inches, per side

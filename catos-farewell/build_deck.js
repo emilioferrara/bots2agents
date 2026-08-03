@@ -51,7 +51,7 @@ pres.company = "A*STAR — Institute of High Performance Computing";
 pres.title = "What the Data Says, and What Singapore Taught Me";
 
 let n = 0;
-const TOTAL = 37; // asserted against the real count at the end of this file
+const TOTAL = 39; // asserted against the real count at the end of this file
 
 // ------------------------------------------------------------------ helpers
 
@@ -405,6 +405,128 @@ divider(1, "The brief · 2025–2026", "I was asked what is\nactually out there.
   s.addNotes(
     "Don't read the stats. Spend the time on the second half: the durable output of a " +
     "visiting appointment is usually the connections and the reproducibility, not the PDF."
+  );
+}
+
+// ====================================================== 7 VISHAKHA / ARES
+{
+  const s = slide();
+  chip(s, "Collaborations");
+  title(s, "With Vishakha Lall — whose scores are these?",
+        "ARES · geopolitical bias in how models classify governance and freedom");
+
+  lines(s, [
+    "Ask several models to score countries on governance — transparency, corruption, rule of law — then change *who is asking*, and in *what language*.",
+  ], M, 1.75, 11.9, 0.75, { size: T_SUB, gap: 0 });
+
+  // each model carries a direction, and the direction is the finding
+  const models = [
+    ["Claude", "↓", "pulls scores down\nconsistently underestimates"],
+    ["OpenAI", "↑", "pulls scores up\nconsistently overestimates"],
+    ["DeepSeek", "↑", "overestimates, and warms to\nAsian countries as a China persona"],
+  ];
+  const cw = 3.83, gap = 0.2;
+  models.forEach((m, i) => {
+    const x = M + i * (cw + gap);
+    card(s, x, 2.6, cw, 1.75, i === 0 ? BLUEGRAY : PEACH);
+    s.addText(m[0], {
+      x: x + 0.3, y: 2.78, w: cw - 1.35, h: 0.45,
+      fontFace: F, fontSize: T_HEAD, bold: true, color: INK, margin: 0, valign: "middle",
+    });
+    s.addText(m[1], {
+      x: x + cw - 1.02, y: 2.7, w: 0.72, h: 0.66,
+      fontFace: F, fontSize: 34, bold: true, color: ACCENT,
+      align: "center", margin: 0, valign: "middle",
+    });
+    s.addText(m[2], {
+      x: x + 0.3, y: 3.32, w: cw - 0.6, h: 0.85,
+      fontFace: F, fontSize: T_CAP, color: GRAY, margin: 0, valign: "top",
+    });
+  });
+
+  s.addText("THE SAME COUNTRY, SCORED UNDER FOUR CONDITIONS", {
+    x: M, y: 4.55, w: 11.9, h: 0.3,
+    fontFace: F, fontSize: 12, bold: true, color: ACCENT, margin: 0, charSpacing: 1,
+  });
+  const conds = ["No context", "As a US citizen", "As a China citizen", "Asked in Chinese"];
+  conds.forEach((c, i) => {
+    const x = M + i * (2.9 + 0.13);
+    card(s, x, 4.9, 2.9, 0.6, CREAM);
+    s.addText(c, {
+      x, y: 4.9, w: 2.9, h: 0.6,
+      fontFace: F, fontSize: T_SUB, color: INK, align: "center", margin: 0, valign: "middle",
+    });
+  });
+
+  lines(s, [
+    "The direction of the error is *stable per model* and moves with the persona — a Latin America penalty under both citizen framings, and Mexico scored correctly by one model and not others.",
+    "What I added: plot ~context minus no-context~ to separate an induced shift from a standing bias; a per-country ranking so systematic offenders surface; finer regions than continents.",
+  ], M, 5.7, 11.9, 1.3, { size: T_SUB, gap: 6 });
+
+  cite(s, "Ground truth: US News soft-power index, top 90 countries. Repo: vishakha-astar/llm-bias.");
+  s.addNotes(
+    "Credit Vishakha properly — this is her analysis and her repo; I was a sounding board. " +
+    "The finding that travels: bias here is not noise, it has a stable direction per model, " +
+    "and the direction moves when you change who the model thinks is asking. " +
+    "Meeting again Aug 3; the persona work in Singapore's languages is the natural next step."
+  );
+}
+
+// ====================================================== 8 GERARD / EPISTEMIC
+{
+  const s = slide();
+  chip(s, "Collaborations");
+  title(s, "With Gerard Yeo — one turn to change its mind",
+        "Epistemic trust in multi-turn conversation · six models, three kinds of pressure");
+
+  // the conversation structure is the experiment, so draw it
+  const turns = [
+    ["Turn 1", "A claim is put\nto the model", CREAM],
+    ["Turn 2", "A manipulation cue\nis introduced", PEACH],
+    ["Turn 3+", "The cue is\nreinforced", CREAM],
+    ["Turn 5", "Where the drift\nhas landed", CREAM],
+  ];
+  const tw = 2.72, tgap = 0.42;
+  turns.forEach((t, i) => {
+    const x = M + i * (tw + tgap);
+    card(s, x, 1.8, tw, 1.55, t[2]);
+    s.addText(t[0], {
+      x: x + 0.28, y: 1.95, w: tw - 0.56, h: 0.4,
+      fontFace: F, fontSize: T_SUB, bold: true, color: i === 1 ? ACCENT : INK, margin: 0,
+    });
+    s.addText(t[1], {
+      x: x + 0.28, y: 2.38, w: tw - 0.56, h: 0.8,
+      fontFace: F, fontSize: T_CAP, color: GRAY, margin: 0, valign: "top",
+    });
+    if (i < 3) {
+      s.addText("→", {
+        x: x + tw + 0.02, y: 2.3, w: 0.38, h: 0.5,
+        fontFace: F, fontSize: T_HEAD, color: ACCENT, align: "center", margin: 0,
+      });
+    }
+  });
+
+  statRow(s, 3.6, [
+    ["6", "models probed\nGPT-5 · Qwen · DeepSeek · Mistral"],
+    ["80%+", "baseline accuracy\nbefore any pressure is applied"],
+    ["20–25%", "talked out of a correct answer\nmost of it landing at turn 2"],
+  ], { h: 1.25 });
+
+  s.addText("AND NOT ALL PRESSURE IS EQUAL", {
+    x: M, y: 5.05, w: 11.9, h: 0.3,
+    fontFace: F, fontSize: 12, bold: true, color: ACCENT, margin: 0, charSpacing: 1,
+  });
+  lines(s, [
+    "~Identity and authority~ move models most. *Provenance* cues come second. *Emotional framing* barely registers.",
+    "Two failure shapes: some models erode — correct, then uncertain, then wrong. Others simply *flip*. Which shape you get depends on the model family.",
+  ], M, 5.4, 11.9, 1.3, { size: T_SUB, gap: 6 });
+
+  cite(s, "Gerard Yeo (A*STAR), EpistemicTrust; ARR August submission. Kimi K3 arm pending.");
+  s.addNotes(
+    "Gerard's experiment and Gerard's results — my role was framing and venue. " +
+    "The line that lands with a policy audience: a model that is right 80% of the time alone " +
+    "can be argued out of a quarter of those answers by someone claiming to be an authority, " +
+    "and it takes one turn. Paper going to ARR; collaboration continues, and I owe Raj that conversation."
   );
 }
 
