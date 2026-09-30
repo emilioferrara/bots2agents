@@ -248,6 +248,7 @@
     SICSS-Singapore, 20 July 2026, NUS, and maintained since as a standing reference.
     Preprints are linked to arXiv; published versions are linked by DOI. Where a paper
     exists in both forms, cite the published version.
+    Last updated 30 September 2026.
   </footer>
 </div>
 
@@ -458,6 +459,22 @@ const DATA = [
   number  = {11},
   year    = {2024},
   doi     = {10.5210/fm.v29i11.13831}
+}`
+      },
+      {
+        title: "Angry but Accurate: Detecting and Profiling the Counter-Misinformation Ecosystem on Twitter",
+        authors: "Eun Cheol Choi, Emilio Ferrara",
+        venue: "HT '26, 108&ndash;114, 2026",
+        why: "Turns the lens on the users who <b>push back</b> on false claims rather than those who spread them. Classifying 264,737 COVID-19 posts as supporting or opposing false claims and comparing 23 user- and text-level features, it cuts against the assumption that negative emotion marks falsehood: <b>misinformation-opposing posts are the more emotionally negative</b>, carrying more anger, disgust, and sadness, modest in size but consistent in direction. Opposing posts also come from more established accounts &mdash; older, more followers, higher listed counts.",
+        doi: "10.1145/3800935.3830879",
+        arxiv: "2607.02900",
+        bib: `@inproceedings{choi2026angry,
+  title     = {Angry but Accurate: Detecting and Profiling the Counter-Misinformation Ecosystem on Twitter},
+  author    = {Choi, Eun Cheol and Ferrara, Emilio},
+  booktitle = {Proceedings of the 37th ACM Conference on Hypertext and Social Media},
+  pages     = {108--114},
+  year      = {2026},
+  doi       = {10.1145/3800935.3830879}
 }`
       },
       {
@@ -703,6 +720,20 @@ const DATA = [
     sec: "06", secTitle: "Defense",
     items: [
       {
+        title: "Temporal signatures of coordination: detecting and anticipating influence operations on social media",
+        authors: "Simone Mungari, Emilio Ferrara, Luca Luceri",
+        venue: "EPJ Data Science, 2026",
+        why: "Treats defense as two jobs rather than one: telling operators apart from ordinary users, and forecasting who they will reach next. On five state-attributed campaigns (China, Cuba, Iran, Russia, UAE), organic adoption of campaign hashtags and URLs is statistically associated with prior exposure to campaign accounts in <b>four of the five</b>. Two modules follow: IOBoost, a light supervised classifier on temporal, activity, and network-motif features, reaches an <b>average F1 of 97.5%</b> and generalizes across campaigns; IOLink, a graph neural network over the interaction network, predicts future operator&ndash;organic contacts at <b>86% ROC-AUC</b>.",
+        doi: "10.1140/epjds/s13688-026-00693-8",
+        bib: `@article{mungari2026temporal,
+  title   = {Temporal signatures of coordination: detecting and anticipating influence operations on social media},
+  author  = {Mungari, Simone and Ferrara, Emilio and Luceri, Luca},
+  journal = {EPJ Data Science},
+  year    = {2026},
+  doi     = {10.1140/epjds/s13688-026-00693-8}
+}`
+      },
+      {
         title: "Cross-Platform Narrative Prediction: Leveraging Platform-Invariant Discourse Networks",
         authors: "Patrick Gerard, Luca Luceri, Leonardo Blas, Emilio Ferrara",
         venue: "arXiv:2510.09464, 2025 (preprint)",
@@ -755,15 +786,34 @@ const DATA = [
     sec: "08", secTitle: "The Twitter/X influence-operations archive",
     items: [
       {
+        title: "Manufactured Divisiveness: Decomposing the Hostile Content of Seven Social Media Influence Operations",
+        authors: "Emilio Ferrara",
+        venue: "arXiv:2607.14491, 2026 (preprint)",
+        why: "Argues the headline finding that influence operations are hate factories rests on a <b>measurement error</b>: the detectors behind those rates are validated against a broader notion of out-group hostility, so they over-attribute hate to partisan and geopolitical invective. Across 25.08M tweets from seven government-attributed campaigns (8,275 accounts), <b>50.1% of hostile posts are identity-based attacks, 30.4% partisan, 19.5% invective against states</b> &mdash; reporting all of it as hate overstates hate roughly twofold, and only 18.7% is both identity-based and dehumanizing or inciting. Six of the seven campaigns sort into three regimes that one hate rate flattens.",
+        arxiv: "2607.14491",
+        bib: `@misc{ferrara2026manufactured,
+  title         = {Manufactured Divisiveness: Decomposing the Hostile Content of Seven Social Media Influence Operations},
+  author        = {Ferrara, Emilio},
+  year          = {2026},
+  eprint        = {2607.14491},
+  archivePrefix = {arXiv}
+}`
+      },
+      {
         title: "Five Myths About Influence Operations: What 25 Million Tweets Across Seven State Campaigns Reveal",
         authors: "Emilio Ferrara",
-        venue: "Preprint, 2026 (under review)",
+        venue: "Systems 14(8), 970, 2026",
         why: "Built on the 7-campaign, 25M-tweet platform takedown archive. Cite it for <b>what the archive route actually yields</b>; it condenses the influence-operations literature into five corrections.",
+        doi: "10.3390/systems14080970",
         bib: `@article{ferrara2026fivemyths,
-  title = {Five Myths About Influence Operations: What 25 Million Tweets Across Seven State Campaigns Reveal},
-  author = {Ferrara, Emilio},
-  journal = {Preprint, under review},
-  year = {2026}
+  title   = {Five Myths About Influence Operations: What 25 Million Tweets Across Seven State Campaigns Reveal},
+  author  = {Ferrara, Emilio},
+  journal = {Systems},
+  volume  = {14},
+  number  = {8},
+  pages   = {970},
+  year    = {2026},
+  doi     = {10.3390/systems14080970}
 }`
       }
     ]
